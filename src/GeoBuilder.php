@@ -16,6 +16,8 @@ namespace SerendipityHQ\Component\GeoBuilder;
 
 /**
  * Constants representing the header used in any dump from GeoNames.
+ *
+ * @codeCoverageIgnore
  */
 class GeoBuilder
 {

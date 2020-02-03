@@ -83,5 +83,8 @@ parameters:
         - 'Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector'
         - 'Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector'
         - 'Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector'
+        - 'Rector\SOLID\Rector\Class_\FinalizeClassesWithoutChildrenRector'
+        # Not usable in a library
+        - 'Rector\DeadCode\Rector\Class_\RemoveUnusedClassesRector'
         # Incompatible with static analyzers
         #- 'Rector\DeadCode\Rector\Concat\RemoveConcatAutocastRector'

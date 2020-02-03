@@ -10,12 +10,12 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__.'/tests');
 
 $header = <<<EOF
-This file is part of PHP Value Objects.
+This file is part of GeoBuilder.
 
-Copyright Adamo Aerendir Crespi 2015-2017.
+Copyright Adamo Aerendir Crespi 2020.
 
 @author    Adamo Aerendir Crespi <hello@aerendir.me>
-@copyright Copyright (C) 2015 - 2020 Aerendir. All rights reserved.
+@copyright Copyright (C) 2020 Aerendir. All rights reserved.
 @license   MIT
 EOF;
 

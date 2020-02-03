@@ -2,6 +2,8 @@
 
 namespace SerendipityHQ\Component\GeoBuilder;
 
+use Safe\Exceptions\FilesystemException;
+use function Safe\file_get_contents;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 
 /**
@@ -13,6 +15,7 @@ class Parser
      * @param string $filePath The txt file from Geonames.
      *
      * @return array
+     * @throws FilesystemException
      */
     public static function parse(string $filePath):array
     {

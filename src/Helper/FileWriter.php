@@ -1,4 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of GeoBuilder.
+ *
+ * Copyright Adamo Aerendir Crespi 2020.
+ *
+ * @author    Adamo Aerendir Crespi <hello@aerendir.me>
+ * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
+ * @license   MIT
+ */
 
 namespace SerendipityHQ\Component\GeoBuilder\Helper;
 
@@ -16,13 +28,13 @@ class FileWriter
      * @throws \Safe\Exceptions\FilesystemException
      * @throws \Safe\Exceptions\StringsException
      */
-    public static function writeFile(string $dir, string $contents):void
+    public static function writeFile(string $dir, string $contents): void
     {
         $parts = explode(DIRECTORY_SEPARATOR, $dir);
-        $file = array_pop($parts);
-        $dir = '';
+        $file  = array_pop($parts);
+        $dir   = '';
 
-        foreach($parts as $part) {
+        foreach ($parts as $part) {
             if ( ! is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! mkdir($dir) && ! is_dir($dir)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
             }
@@ -37,7 +49,7 @@ class FileWriter
      *
      * @return string
      */
-    public static function buildFileName(array $fileNameParts, string $ext):string
+    public static function buildFileName(array $fileNameParts, string $ext): string
     {
         return strtoupper(implode('_', self::removeEmpties($fileNameParts))) . $ext;
     }
@@ -47,8 +59,8 @@ class FileWriter
      *
      * @return array
      */
-    private static function removeEmpties(array $fileName):array
+    private static function removeEmpties(array $fileName): array
     {
-        return array_filter($fileName, static function ($value) { return !empty($value);});
+        return array_filter($fileName, static function ($value) { return ! empty($value); });
     }
 }

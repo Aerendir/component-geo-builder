@@ -3,32 +3,31 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Whois Component.
+ * This file is part of GeoBuilder.
  *
- * Copyright Adamo Aerendir Crespi 2019.
+ * Copyright Adamo Aerendir Crespi 2020.
  *
  * @author    Adamo Aerendir Crespi <hello@aerendir.me>
- * @copyright Copyright (C) 2019 Aerendir. All rights reserved.
- * @license   MIT. Read the file LICENSE for more information.
+ * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
+ * @license   MIT
  */
 
 namespace SerendipityHQ\Component\GeoBuilder\Command;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
-use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
-use SerendipityHQ\Component\GeoBuilder\Parser;
-use Symfony\Component\Console\Helper\ProgressBar;
 use SerendipityHQ\Bundle\ConsoleStyles\Console\Formatter\SerendipityHQOutputFormatter;
 use SerendipityHQ\Bundle\ConsoleStyles\Console\Style\SerendipityHQStyle;
+use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
+use SerendipityHQ\Component\GeoBuilder\Parser;
+use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\ConsoleSectionOutput;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -39,7 +38,7 @@ class BuildCommand extends Command
     /** @var string */
     private const DATA_URL = 'https://www.geonames.org/export/zip/';
 
-    /** @var string  */
+    /** @var string */
     private const EXT = '.zip';
 
     /** @var string $defaultName */
@@ -74,21 +73,9 @@ class BuildCommand extends Command
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function configure(): void
-    {
-        $this
-            // the short description shown while running "php bin/console list"
-            ->setDescription('Creates the list of information of countries.')
-            ->addArgument('countries', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Indicate for which countries you want to build information.');
-    }
-
-    /**
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @return int
      * @throws BuildException
      * @throws \Safe\Exceptions\FilesystemException
      * @throws \Safe\Exceptions\StringsException
@@ -96,6 +83,8 @@ class BuildCommand extends Command
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     *
+     * @return int
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -122,17 +111,29 @@ class BuildCommand extends Command
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
+     */
+    protected function configure(): void
+    {
+        $this
+            // the short description shown while running "php bin/console list"
+            ->setDescription('Creates the list of information of countries.')
+            ->addArgument('countries', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Indicate for which countries you want to build information.');
+    }
+
+    /**
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     *
+     * @return void
      */
-    private function scrapeListOfCountries():void
+    private function scrapeListOfCountries(): void
     {
         $this->ioWriter->writeln('Downloading the list of countries available on GeoNames');
         $response = $this->client->request('GET', self::DATA_URL);
-        $content = $response->getBody()->getContents();
+        $content  = $response->getBody()->getContents();
 
         $this->ioWriter->writeln('Processing the list of countries available on GeoNames');
         $this->availableCountries = (new Crawler($content))
@@ -141,10 +142,9 @@ class BuildCommand extends Command
                 $value = $node->text();
                 $length = strlen(self::EXT);
 
-                return \Safe\substr($value, -$length) === self::EXT;
+                return self::EXT === \Safe\substr($value, -$length);
             })
             ->each(static function (Crawler $node) {
-
                 return $node->text();
             });
     }
@@ -152,10 +152,11 @@ class BuildCommand extends Command
     /**
      * @param array $requestedCountries
      *
-     * @return bool
      * @throws \Safe\Exceptions\StringsException
+     *
+     * @return bool
      */
-    private function checkRequestedCountriesAreAvailable(array $requestedCountries):bool
+    private function checkRequestedCountriesAreAvailable(array $requestedCountries): bool
     {
         foreach ($requestedCountries as $requestedCountry) {
             if (false === in_array(\Safe\sprintf('%s%s', strtoupper($requestedCountry), self::EXT), $this->availableCountries, true)) {
@@ -176,7 +177,7 @@ class BuildCommand extends Command
      * @throws \Safe\Exceptions\FilesystemException
      * @throws \Safe\Exceptions\StringsException
      */
-    private function processRequestedCountries(OutputInterface $output, array $requestedCountries):void
+    private function processRequestedCountries(OutputInterface $output, array $requestedCountries): void
     {
         $this->ioWriter->writeln('Starting to process requested countries');
         $progress = new ProgressBar($output, count($requestedCountries));
@@ -209,29 +210,28 @@ class BuildCommand extends Command
         $decodedCountry = $this->decodeUnzippedCountry($requestedCountry, $unzippedCountry);
 
         $this->dumper->dump($this->dumpDir, $decodedCountry);
-
-
     }
 
     /**
      * @param ConsoleSectionOutput $output
      * @param string               $requestedCountry
      *
-     * @return string
      * @throws \Safe\Exceptions\FilesystemException
      * @throws \Safe\Exceptions\StringsException
      *
      * Thanks to
      * - https://gist.github.com/devNoiseConsulting/fb6195fbd09bfb2c1f81367dd9e727ed
+     *
+     * @return string
      */
-    private function downloadRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry):string
+    private function downloadRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry): string
     {
         $tmpFileName = \Safe\tempnam(sys_get_temp_dir(), 'geobuilder');
-        $progress = new ProgressBar($output, 0, 1);
+        $progress    = new ProgressBar($output, 0, 1);
         $this->client->request('GET', \Safe\sprintf('%s%s%s', self::DATA_URL, strtoupper($requestedCountry), self::EXT), [
             RequestOptions::SINK => $tmpFileName,
             // Vote up https://stackoverflow.com/a/34923682/1399706
-            RequestOptions::PROGRESS => static function(int $dlSize, int $dlDownloaded, int $ulSize, int $ulUploaded) use ($progress):void {
+            RequestOptions::PROGRESS => static function (int $dlSize, int $dlDownloaded, int $ulSize, int $ulUploaded) use ($progress): void {
                 if (0 < $dlSize && 0 === $progress->getMaxSteps()) {
                     $progress->setMaxSteps($dlSize);
                 }
@@ -239,7 +239,7 @@ class BuildCommand extends Command
                 if (0 < $dlDownloaded) {
                     $progress->setProgress($dlDownloaded);
                 }
-            }
+            },
         ]);
 
         $progress->finish();
@@ -252,10 +252,11 @@ class BuildCommand extends Command
     /**
      * @param string $downloadedCountry
      *
-     * @return string
      * @throws \Safe\Exceptions\FilesystemException
+     *
+     * @return string
      */
-    private function unzipDownloadedCountry(string $downloadedCountry):string
+    private function unzipDownloadedCountry(string $downloadedCountry): string
     {
         $zip = new \ZipArchive();
         $res = $zip->open($downloadedCountry);
@@ -285,11 +286,13 @@ class BuildCommand extends Command
      * @param string $requestedCountry
      * @param string $unzippedCountry
      *
-     * @return array
-     * @throws BuildException
      * @throws \Safe\Exceptions\StringsException
+     * @throws \Safe\Exceptions\FilesystemException
+     * @throws BuildException
+     *
+     * @return array
      */
-    private function decodeUnzippedCountry(string $requestedCountry, string $unzippedCountry):array
+    private function decodeUnzippedCountry(string $requestedCountry, string $unzippedCountry): array
     {
         $fileName = null;
         if (2 === strlen($requestedCountry)) {

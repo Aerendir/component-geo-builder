@@ -1,4 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of GeoBuilder.
+ *
+ * Copyright Adamo Aerendir Crespi 2020.
+ *
+ * @author    Adamo Aerendir Crespi <hello@aerendir.me>
+ * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
+ * @license   MIT
+ */
 
 namespace SerendipityHQ\Component\GeoBuilder\Reader;
 
@@ -14,7 +26,7 @@ class HierarchyJsonReader implements ReaderInterface
     private $dataFolderPath;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __construct(string $dataFolderPath)
     {
@@ -22,13 +34,14 @@ class HierarchyJsonReader implements ReaderInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null)
     {
-        $fileName = FileWriter::buildFileName([$country,$admin1,$admin2,$admin3], '.json');
+        $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');
         $filePath = $this->dataFolderPath . DIRECTORY_SEPARATOR . $fileName;
-        $content = file_get_contents($filePath);
+        $content  = file_get_contents($filePath);
+
         return json_decode($content, true);
     }
 }

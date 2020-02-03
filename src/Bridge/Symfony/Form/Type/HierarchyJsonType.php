@@ -1,37 +1,24 @@
 <?php
 
 /*
- * This file is part of Kredi.
+ * This file is part of GeoBuilder.
  *
  * Copyright Adamo Aerendir Crespi 2020.
  *
- * This code is to consider private and non disclosable to anyone for whatever reason.
- * Every right on this code is reserved.
- *
- * @author    Adamo Aerendir Crespi <aerendir@serendipityhq.com>
+ * @author    Adamo Aerendir Crespi <hello@aerendir.me>
  * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
- * @license   SECRETED. No distribution, no copy, no derivative, no divulgation or any other activity or action that
- *            could disclose this text.
+ * @license   MIT
  */
 
 namespace SerendipityHQ\Component\GeoBuilder\Bridge\Symfony\Form\Type;
 
-use App\Data\Regions;
-use App\Entity\Embeddable\ZoneEmbeddable;
 use App\Entity\User;
-use SerendipityHQ\Bundle\RemotesBundle\Form\Type\RemoteAccessType;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonReader;
-use SerendipityHQ\Component\ValueObjects\Address\Bridge\Symfony\Form\Type\AddressType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\OptionsResolver\Exception\AccessException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
@@ -50,7 +37,7 @@ class HierarchyJsonType extends AbstractType
      */
     public function __construct(HierarchyJsonReader $reader)
     {
-        $this->reader = $reader;
+        $this->reader           = $reader;
         $this->propertyAccessor = new PropertyAccessor();
     }
 
@@ -74,9 +61,9 @@ class HierarchyJsonType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
-    public function addAdmin2Field(FormBuilderInterface $builder, array $options):void
+    public function addAdmin2Field(FormBuilderInterface $builder, array $options): void
     {
-        $type = $this;
+        $type          = $this;
         $addAccessForm = static function (FormEvent $event) use ($options, $type) {
             $data = $event->getData();
 
@@ -99,9 +86,9 @@ class HierarchyJsonType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
-    public function addAdmin3Field(FormBuilderInterface $builder, array $options):void
+    public function addAdmin3Field(FormBuilderInterface $builder, array $options): void
     {
-        $type = $this;
+        $type          = $this;
         $addAccessForm = static function (FormEvent $event) use ($options, $type) {
             $data = $event->getData();
 
@@ -123,10 +110,10 @@ class HierarchyJsonType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver):void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'country' => null
+            'country' => null,
                                ]);
 
         $resolver->setAllowedTypes('country', ['string']);
@@ -137,7 +124,7 @@ class HierarchyJsonType extends AbstractType
      *
      * @return array
      */
-    private function prepareChoices(array $values):array
+    private function prepareChoices(array $values): array
     {
         asort($values, SORT_NATURAL);
         $values = array_flip($values);

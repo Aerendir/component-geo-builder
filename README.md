@@ -7,8 +7,7 @@
 # Geo Builder
 
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/serendipity_hq/component-geo-builder?color=%238892BF)](https://packagist.org/packages/serendipity_hq/component-geo-builder)
-[![Tested with Symfony ^3.4](https://img.shields.io/badge/Symfony-%5E3.4-333)](https://github.com/Aerendir/component-geo-builder/actions)
-[![Tested with Symfony ^4.0](https://img.shields.io/badge/Symfony-%5E4.0-333)](https://github.com/Aerendir/component-geo-builder/actions)
+[![Tested with Symfony ^4.4](https://img.shields.io/badge/Symfony-%5E4.4-333)](https://github.com/Aerendir/component-geo-builder/actions)
 [![Tested with Symfony ^5.0](https://img.shields.io/badge/Symfony-%5E5.0-333)](https://github.com/Aerendir/component-geo-builder/actions)
 
 [![Latest Stable Version](https://poser.pugx.org/serendipity_hq/component-geo-builder/v/stable.png)](https://packagist.org/packages/serendipity_hq/component-geo-builder)
@@ -36,8 +35,94 @@ Parses the exports of countries from Geonames and exports the data in machine re
 
 It downloads information of countries from [Geonames exports](https://www.geonames.org/export/zip/).
 
-## Install Component GeoBuilder via Copmoser
+## Installation and Configuration
+### Install Component GeoBuilder via Copmoser
 
     composer req serendipity_hq/component-geo-coder
 
 This library follows the http://semver.org/ versioning conventions.
+
+However, until the version 1, the minor release is treted like a makor one.
+
+So it is possible a break in the public API between minor versions (0.1 > 0.2 > 0.3).).
+
+The component is anyway stable and can be used in production, also if it is not very flexible.
+
+See the issues to know more about what we have in mind to implement.
+
+### Register the command
+
+Open the file `config/services.yaml` and add the class of the `geobuilder` command:
+
+```yaml
+# config/services.yaml
+
+services:
+    ...
+    SerendipityHQ\Component\GeoBuilder\Command\BuildCommand:
+        $dumpDir: '%kernel.cache_dir%/geobuilder'
+
+    # You also need to autowire the Guzzle CLient if you don't already have one
+    GuzzleHttp\Client: ~
+    ...
+```
+
+## Building the list you need
+
+To build the list you need, simply launch the command `geobuilder:build` appending the countries you want to build lists for:
+
+```console
+$ bin/console geobuilder:build it de
+```
+
+By default the command uses the Hierarchy reader and will create a lot of `json` files in the `kernel.cache_dir/geobuilder` folder of your Symfony App.
+
+You can read more about readers, saving folders and more reading the full documentation.
+
+For the moment, let's continue putting `GeoBuilder` at work.
+
+The next step is to create a form with the data we have just built.
+
+## Creating the form
+
+To use the form types, you need to register them as services, so they can be properly initialized by Symfony.
+
+To register them, open the file `config/services.yaml` and add the `HierarchyJsonType`:
+
+```yaml
+# config/services.yaml
+
+services:
+    ...
+    SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonReader:
+        $dataFolderPath: '%kernel.cache_dir%/geobuilder'
+    SerendipityHQ\Component\GeoBuilder\Bridge\Symfony\Form\Type\HierarchyJsonType: ~
+```
+
+Then in your form you can add the `HierarchyJsonType`:
+
+```php
+
+class UserZoneType extends AbstractType
+{
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array<string,mixed>  $options
+     * @suppress PhanUnusedPublicMethodParameter
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder->add('geobuilder', HierarchyJsonType::class, ['country' => 'it']);
+    }
+}
+```
+
+## About the `countries.json` file
+
+This file will contain only the countries you built with the `bin/console geobuilder:build` command.
+
+You can get a complete list of localized countries using the `Countries::getNames()` method of the `symfony/intl` component.
+
+But the Symfony component will return all countries in the world, also if you didn't built them.
+
+# Development status

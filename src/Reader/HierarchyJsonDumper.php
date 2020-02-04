@@ -65,6 +65,7 @@ class HierarchyJsonDumper implements DumperInterface
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function reset(): void
     {

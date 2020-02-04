@@ -78,8 +78,6 @@ class HierarchyJsonTypeTest extends TypeTestCase
         // submit the data to the form directly
         $form->submit($values);
 
-        //$this::assertTrue($form->isSynchronized());
-
         $view     = $form->createView();
         $children = $view->children;
 

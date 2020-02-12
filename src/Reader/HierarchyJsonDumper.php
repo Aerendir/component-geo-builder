@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Reader;
 
+use Safe\Exceptions\FilesystemException;
+use Safe\Exceptions\StringsException;
 use SerendipityHQ\Component\GeoBuilder\DumperInterface;
 use SerendipityHQ\Component\GeoBuilder\GeoBuilder;
 use SerendipityHQ\Component\GeoBuilder\Helper\FileWriter;
@@ -54,8 +56,8 @@ class HierarchyJsonDumper implements DumperInterface
     /**
      * {@inheritdoc}
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     public function dump(string $dumpPath, array $parsedGeonamesDump): void
     {
@@ -65,6 +67,7 @@ class HierarchyJsonDumper implements DumperInterface
 
     /**
      * {@inheritdoc}
+     *
      * @codeCoverageIgnore
      */
     public function reset(): void
@@ -103,8 +106,8 @@ class HierarchyJsonDumper implements DumperInterface
     /**
      * @param string $dumpPath
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     private function dumpData(string $dumpPath): void
     {
@@ -118,20 +121,20 @@ class HierarchyJsonDumper implements DumperInterface
     /**
      * @param string $dumpPath
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     private function dumpCountries(string $dumpPath): void
     {
         $export = $this->encoder->encode($this->countries, JsonEncoder::FORMAT);
-        \SerendipityHQ\Component\GeoBuilder\Helper\FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . 'countries.json', $export);
+        FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . 'countries.json', $export);
     }
 
     /**
      * @param string $dumpPath
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     private function dumpAdmins1(string $dumpPath): void
     {
@@ -142,15 +145,15 @@ class HierarchyJsonDumper implements DumperInterface
         foreach ($this->admins1 as $countryCode => $admins1) {
             $filename = strtoupper($countryCode) . '.json';
             $export   = $this->encoder->encode($admins1, JsonEncoder::FORMAT);
-            \SerendipityHQ\Component\GeoBuilder\Helper\FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
+            FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
         }
     }
 
     /**
      * @param string $dumpPath
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     private function dumpAdmins2(string $dumpPath): void
     {
@@ -169,7 +172,7 @@ class HierarchyJsonDumper implements DumperInterface
                     $admin1,
                 ], '.json');
                 $export = $this->encoder->encode($admins2, JsonEncoder::FORMAT);
-                \SerendipityHQ\Component\GeoBuilder\Helper\FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
+                FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
             }
         }
     }
@@ -177,8 +180,8 @@ class HierarchyJsonDumper implements DumperInterface
     /**
      * @param string $dumpPath
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     private function dumpAdmins3(string $dumpPath): void
     {
@@ -203,7 +206,7 @@ class HierarchyJsonDumper implements DumperInterface
                             $admin2,
                         ], '.json');
                     $export = $this->encoder->encode($admins3, JsonEncoder::FORMAT);
-                    \SerendipityHQ\Component\GeoBuilder\Helper\FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
+                    FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                 }
             }
         }
@@ -212,8 +215,8 @@ class HierarchyJsonDumper implements DumperInterface
     /**
      * @param string $dumpPath
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     private function dumpPlaces(string $dumpPath): void
     {
@@ -244,7 +247,7 @@ class HierarchyJsonDumper implements DumperInterface
                                 $admin3,
                             ], '.json');
                         $export = $this->encoder->encode($places, JsonEncoder::FORMAT);
-                        \SerendipityHQ\Component\GeoBuilder\Helper\FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
+                        FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                     }
                 }
             }

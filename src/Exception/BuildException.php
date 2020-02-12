@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Exception;
 
+use Safe\Exceptions\StringsException;
+use function Safe\sprintf;
 use Throwable;
 
 /**
@@ -34,12 +36,12 @@ class BuildException extends \Exception
     /**
      * @param string $requestedCountry
      *
-     * @throws \Safe\Exceptions\StringsException
+     * @throws StringsException
      *
      * @return static
      */
     public static function noSourceFileFound(string $requestedCountry): self
     {
-        return new self(\Safe\sprintf('Impossible to find the source file for country %s.', $requestedCountry));
+        return new self(sprintf('Impossible to find the source file for country %s.', $requestedCountry));
     }
 }

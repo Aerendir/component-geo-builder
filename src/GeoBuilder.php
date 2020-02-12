@@ -47,13 +47,4 @@ class GeoBuilder
 
     /** @var int */
     public const ADMIN_3_CODE = 8;
-
-    /** @var int */
-    public const LATITUDE = 9;
-
-    /** @var int */
-    public const LONGITUDE = 10;
-
-    /** @var int */
-    public const ACCURACY = 11;
 }

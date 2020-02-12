@@ -14,22 +14,22 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Command;
 
-use Safe\Exceptions\FilesystemException;
-use Safe\Exceptions\StringsException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
-use function Safe\sprintf;
-use function Safe\unlink;
-use function Safe\mkdir;
-use function Safe\substr;
-use function Safe\tempnam;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use Safe\Exceptions\FilesystemException;
+use Safe\Exceptions\StringsException;
+use function Safe\mkdir;
+use function Safe\sprintf;
+use function Safe\substr;
+use function Safe\tempnam;
+use function Safe\unlink;
 use SerendipityHQ\Bundle\ConsoleStyles\Console\Formatter\SerendipityHQOutputFormatter;
 use SerendipityHQ\Bundle\ConsoleStyles\Console\Style\SerendipityHQStyle;
 use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
 use SerendipityHQ\Component\GeoBuilder\Parser;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -252,10 +252,10 @@ class BuildCommand extends Command
     /**
      * @param string $downloadedCountry
      *
-     * @return string
      * @throws StringsException
-     *
      * @throws FilesystemException
+     *
+     * @return string
      */
     private function unzipDownloadedCountry(string $downloadedCountry): string
     {
@@ -274,7 +274,7 @@ class BuildCommand extends Command
 
             mkdir($tmpFolder);
 
-            if (! is_dir($tmpFolder)) {
+            if ( ! is_dir($tmpFolder)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $tmpFolder));
             }
         }

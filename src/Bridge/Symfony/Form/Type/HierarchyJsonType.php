@@ -30,6 +30,9 @@ class HierarchyJsonType extends AbstractType
     /** @var HierarchyJsonReader $reader */
     private $reader;
 
+    /**
+     * @var PropertyAccessor
+     */
     private $propertyAccessor;
 
     /**
@@ -127,8 +130,7 @@ class HierarchyJsonType extends AbstractType
     private function prepareChoices(array $values): array
     {
         asort($values, SORT_NATURAL);
-        $values = array_flip($values);
 
-        return $values;
+        return array_flip($values);
     }
 }

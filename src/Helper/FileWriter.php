@@ -14,6 +14,10 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Helper;
 
+use Safe\Exceptions\FilesystemException;
+use Safe\Exceptions\StringsException;
+use function Safe\file_put_contents;
+
 /**
  * Helper class to deal with file writing.
  */
@@ -25,8 +29,8 @@ class FileWriter
      * @param string $dir
      * @param string $contents
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     public static function writeFile(string $dir, string $contents): void
     {
@@ -40,7 +44,7 @@ class FileWriter
             }
         }
 
-        \Safe\file_put_contents(\Safe\sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
+        file_put_contents(\Safe\sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
     }
 
     /**
@@ -61,6 +65,6 @@ class FileWriter
      */
     private static function removeEmpties(array $fileName): array
     {
-        return array_filter($fileName, static function ($value) { return ! empty($value); });
+        return array_filter($fileName, static function ($value): bool { return ! empty($value); });
     }
 }

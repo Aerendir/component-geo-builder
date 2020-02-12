@@ -36,7 +36,7 @@ class HierarchyJsonReader implements ReaderInterface
     /**
      * {@inheritdoc}
      */
-    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null)
+    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array
     {
         $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');
         $filePath = $this->dataFolderPath . DIRECTORY_SEPARATOR . $fileName;

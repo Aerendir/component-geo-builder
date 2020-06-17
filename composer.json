@@ -33,7 +33,7 @@
         "symfony/console": "^4.4||^5",
         "symfony/form": "^4.4||^5",
         "symfony/var-dumper": "^4.4||^5",
-        "vimeo/psalm": "3.8.3"
+        "vimeo/psalm": "3.11.6"
     },
     "suggest": {
         "symfony/form": "To use the builtin form types."

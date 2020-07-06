@@ -18,7 +18,7 @@
         "serendipity_hq/console-styles-bundle": "dev-dev",
         "symfony/dom-crawler": "^4.4||^5.0",
         "symfony/serializer": "^4.4||^5.0",
-        "thecodingmachine/safe": "^1.0"
+        "thecodingmachine/safe": "^0.1|^1.0"
     },
     "require-dev": {
         "drenso/phan-extensions": "2.5.0",
@@ -33,6 +33,7 @@
         "symfony/console": "^4.4||^5",
         "symfony/form": "^4.4||^5",
         "symfony/var-dumper": "^4.4||^5",
+        "thecodingmachine/phpstan-safe-rule": "@stable",
         "vimeo/psalm": "3.8.3"
     },
     "suggest": {

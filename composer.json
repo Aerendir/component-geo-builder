@@ -24,7 +24,6 @@
         "drenso/phan-extensions": "@stable",
         "friendsofphp/php-cs-fixer": "^2.16",
         "phan/phan": "^2.4.6",
-        "phpmetrics/phpmetrics": "^2.5",
         "phpstan/phpstan": "^0.12.7",
         "phpunit/phpunit": "^8.5",
         "psalm/plugin-phpunit": "@stable",

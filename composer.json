@@ -51,5 +51,8 @@
         "psr-4": {
             "SerendipityHQ\\Component\\GeoBuilder\\Tests\\": "tests"
         }
+    },
+    "conflict": {
+        "nikic/php-parser": "4.6.0"
     }
 }

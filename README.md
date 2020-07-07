@@ -21,7 +21,6 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=security_rating)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/daa2a03b-444d-4ea6-8516-10e81c089b84/mini.png)](https://insight.sensiolabs.com/projects/daa2a03b-444d-4ea6-8516-10e81c089b84)
 
 [![Phan](https://github.com/Aerendir/component-geo-builder/workflows/Phan/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
 [![PHPStan](https://github.com/Aerendir/component-geo-builder/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)

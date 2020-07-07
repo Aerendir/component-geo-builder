@@ -20,7 +20,7 @@ jobs:
               with:
                   php-version: ${{ matrix.php }}
                   coverage: pcov
-                  tools: prestissimo, phive
+                  tools: prestissimo
                   extensions: intl
 
             - name: Install Composer deps
@@ -29,13 +29,11 @@ jobs:
 
             - name: Run PHPunit
               run: |
-                  ./vendor/bin/phpunit --verbose --debug
-              env:
-                  SYMFONY_DEPRECATIONS_HELPER: weak_vendors
+                  ./vendor/bin/simple-phpunit
 
             - name: Change paths in clover.xml
               run: |
-                  sed -i 's+/home/runner/work/component-geo-builder/component-geo-builder+/github/workspace+g' ./build/logs/clover.xml
+                  sed -i 's+/home/runner/work/component-geo-builder/component-geo-builder+/github/workspace+g' ./build/coverage/clover.xml
 
             - name: Sonarcloud
               uses: sonarsource/sonarcloud-github-action@master

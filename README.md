@@ -1,19 +1,27 @@
 <p align="center">
     <a href="http://www.serendipityhq.com" target="_blank">
-        <img src="http://www.serendipityhq.com/assets/open-source-projects/Logo-SerendipityHQ-Icon-Text-Purple.png">
+        <img style="max-width: 350px" src="http://www.serendipityhq.com/assets/open-source-projects/Logo-SerendipityHQ-Icon-Text-Purple.png">
     </a>
 </p>
 
-# Geo Builder
+<h1 align="center">Serendipity HQ Geo Builder</h1>
+<p align="center">
+    Parses the exports of countries from Geonames and exports the data in machine readable formats.<br />
+    It downloads information of countries from [Geonames exports](https://www.geonames.org/export/zip/).<br />
+    Ready to be integrated in Symfony apps.
+</p>
+<p align="center">
+    <a href="https://github.com/Aerendir/component-geo-builder/releases"><img src="https://img.shields.io/packagist/v/serendipity_hq/component-geo-builder.svg?style=flat-square"></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"></a>
+    <a href="https://github.com/Aerendir/component-geo-builder/releases"><img src="https://img.shields.io/packagist/php-v/serendipity_hq/component-geo-builder?color=%238892BF&style=flat-square&logo=php" /></a>
+    <a title="Tested with Symfony ^4.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^4.4" src="https://img.shields.io/badge/Symfony-%5E4.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^5.0" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^5.0" src="https://img.shields.io/badge/Symfony-%5E5.0-333?style=flat-square&logo=symfony" /></a>
+</p>
+<p align="center">
+    <a href="https://symfony.com/doc/current/forms.html"><img src="https://img.shields.io/badge/Suggests-symfony/form-%238892BF?style=flat-square&logo=php"></a>
+</p>
 
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/serendipity_hq/component-geo-builder?color=%238892BF)](https://packagist.org/packages/serendipity_hq/component-geo-builder)
-[![Tested with Symfony ^4.4](https://img.shields.io/badge/Symfony-%5E4.4-333)](https://github.com/Aerendir/component-geo-builder/actions)
-[![Tested with Symfony ^5.0](https://img.shields.io/badge/Symfony-%5E5.0-333)](https://github.com/Aerendir/component-geo-builder/actions)
-
-[![Latest Stable Version](https://poser.pugx.org/serendipity_hq/component-geo-builder/v/stable.png)](https://packagist.org/packages/serendipity_hq/component-geo-builder)
-[![Total Downloads](https://poser.pugx.org/serendipity_hq/component-geo-builder/downloads.svg)](https://packagist.org/packages/serendipity_hq/component-geo-builder)
-[![License](https://poser.pugx.org/serendipity_hq/component-geo-builder/license.svg)](https://packagist.org/packages/serendipity_hq/component-geo-builder)
-
+## Current Status
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=coverage)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=alert_status)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
@@ -22,26 +30,22 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_component-geo-builder&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Aerendir_component-geo-builder)
 
-[![Phan](https://github.com/Aerendir/component-geo-builder/workflows/Phan/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-[![PHPStan](https://github.com/Aerendir/component-geo-builder/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-[![PSalm](https://github.com/Aerendir/component-geo-builder/workflows/PSalm/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-[![PHPUnit](https://github.com/Aerendir/component-geo-builder/workflows/PHPunit/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-[![Composer](https://github.com/Aerendir/component-geo-builder/workflows/Composer/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-[![PHP CS Fixer](https://github.com/Aerendir/component-geo-builder/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-[![Rector](https://github.com/Aerendir/component-geo-builder/workflows/Rector/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions)
-
-Parses the exports of countries from Geonames and exports the data in machine readable formats.
-
-It downloads information of countries from [Geonames exports](https://www.geonames.org/export/zip/).
+[![Phan](https://github.com/Aerendir/component-geo-builder/workflows/Phan/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
+[![PHPStan](https://github.com/Aerendir/component-geo-builder/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
+[![PSalm](https://github.com/Aerendir/component-geo-builder/workflows/PSalm/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
+[![PHPUnit](https://github.com/Aerendir/component-geo-builder/workflows/PHPunit/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
+[![Composer](https://github.com/Aerendir/component-geo-builder/workflows/Composer/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
+[![PHP CS Fixer](https://github.com/Aerendir/component-geo-builder/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
+[![Rector](https://github.com/Aerendir/component-geo-builder/workflows/Rector/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
 
 ## Installation and Configuration
-### Install Component GeoBuilder via Copmoser
+### Install Component GeoBuilder via Composer
 
-    composer req serendipity_hq/component-geo-coder
+    composer req serendipity_hq/component-geo-builder
 
 This library follows the http://semver.org/ versioning conventions.
 
-However, until the version 1, the minor release is treted like a makor one.
+However, until the version 1, the minor release is treated like a major one.
 
 So it is possible a break in the public API between minor versions (0.1 > 0.2 > 0.3).).
 
@@ -49,7 +53,7 @@ The component is anyway stable and can be used in production, also if it is not 
 
 See the issues to know more about what we have in mind to implement.
 
-### Register the command
+### Register the command in a Symfony application
 
 Open the file `config/services.yaml` and add the class of the `geobuilder` command:
 
@@ -123,5 +127,3 @@ This file will contain only the countries you built with the `bin/console geobui
 You can get a complete list of localized countries using the `Countries::getNames()` method of the `symfony/intl` component.
 
 But the Symfony component will return all countries in the world, also if you didn't built them.
-
-# Development status

@@ -16,8 +16,8 @@
         "ext-zip": "*",
         "guzzlehttp/guzzle": "^6.5",
         "serendipity_hq/console-styles-bundle": "dev-dev",
-        "symfony/dom-crawler": "^4.4||^5.0",
-        "symfony/serializer": "^4.4||^5.0",
+        "symfony/dom-crawler": "^4.4|^5.0",
+        "symfony/serializer": "^4.4|^5.0",
         "thecodingmachine/safe": "^0.1|^1.0"
     },
     "require-dev": {
@@ -29,10 +29,10 @@
         "psalm/plugin-phpunit": "@stable",
         "rector/rector": "^0.6",
         "roave/security-advisories": "dev-master",
-        "symfony/console": "^4.4||^5",
-        "symfony/form": "^4.4||^5",
+        "symfony/console": "^4.4|^5",
+        "symfony/form": "^4.4|^5",
         "symfony/phpunit-bridge": "^5.1",
-        "symfony/var-dumper": "^4.4||^5",
+        "symfony/var-dumper": "^4.4|^5",
         "thecodingmachine/phpstan-safe-rule": "@stable",
         "vimeo/psalm": "3.8.3"
     },

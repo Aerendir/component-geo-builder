@@ -5,6 +5,9 @@
     "license": "MIT",
     "keywords": ["geonames"],
     "homepage": "https://github.com/Aerendir/component-geo-names",
+    "support": {
+        "issues": "https://github.com/Aerendir/component-geo-names/issues"
+    },
     "authors": [
         {
             "name": "Adamo Aerendir Crespi",

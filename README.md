@@ -38,6 +38,23 @@
 [![PHP CS Fixer](https://github.com/Aerendir/component-geo-builder/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
 [![Rector](https://github.com/Aerendir/component-geo-builder/workflows/Rector/badge.svg)](https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev)
 
+## Features
+
+- Download the exports of countries
+- Build you custom lists of countries to use in your app
+
+<hr />
+<h3 align="center">
+    <b>Do you like this bundle?</b><br />
+    <b><a href="#js-repo-pjax-container">LEAVE A &#9733;</a></b>
+</h3>
+<p align="center">
+    or run<br />
+    <code>composer global require symfony/thanks && composer thanks</code><br />
+    to say thank you to all libraries you use in your current project, this included!
+</p>
+<hr />
+
 ## Installation and Configuration
 ### Install Component GeoBuilder via Composer
 
@@ -127,3 +144,15 @@ This file will contain only the countries you built with the `bin/console geobui
 You can get a complete list of localized countries using the `Countries::getNames()` method of the `symfony/intl` component.
 
 But the Symfony component will return all countries in the world, also if you didn't built them.
+
+<hr />
+<h3 align="center">
+    <b>Do you like this bundle?</b><br />
+    <b><a href="#js-repo-pjax-container">LEAVE A &#9733;</a></b>
+</h3>
+<p align="center">
+    or run<br />
+    <code>composer global require symfony/thanks && composer thanks</code><br />
+    to say thank you to all libraries you use in your current project, this included!
+</p>
+<hr />

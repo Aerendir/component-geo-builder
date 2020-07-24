@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.12.2@7c7ebd068f8acaba211d4a2c707c4ba90874fa26">
+  <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
+    <MixedArgument occurrences="12">
+      <code>$options['country']</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$options['country']</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, 'admin1')</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$options['country']</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, 'admin1')</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, 'admin2')</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$data</code>
+      <code>$data</code>
+    </MixedAssignment>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$options</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/Command/BuildCommand.php">
+    <MixedArgument occurrences="3">
+      <code>$requestedCountry</code>
+      <code>$requestedCountry</code>
+      <code>$this-&gt;dumpDir</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$requestedCountry</code>
+      <code>$requestedCountry</code>
+    </MixedAssignment>
+    <PossiblyInvalidArgument occurrences="2">
+      <code>$requestedCountries</code>
+      <code>$requestedCountries</code>
+    </PossiblyInvalidArgument>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$ioWriter</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>section</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Exception/BuildException.php">
+    <LessSpecificReturnStatement occurrences="1">
+      <code>new self(sprintf('Impossible to find the source file for country %s.', $requestedCountry))</code>
+    </LessSpecificReturnStatement>
+    <MissingParamType occurrences="2">
+      <code>$message</code>
+      <code>$code</code>
+    </MissingParamType>
+    <MixedArgument occurrences="2">
+      <code>$message</code>
+      <code>$code</code>
+    </MixedArgument>
+    <MoreSpecificReturnType occurrences="1">
+      <code>static</code>
+    </MoreSpecificReturnType>
+  </file>
+  <file src="src/Helper/FileWriter.php">
+    <PossiblyFalseArgument occurrences="1">
+      <code>$parts</code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseIterator occurrences="1">
+      <code>$parts</code>
+    </PossiblyFalseIterator>
+  </file>
+  <file src="src/Parser.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Reader/HierarchyJsonDumper.php">
+    <InvalidArgument occurrences="5">
+      <code>$export</code>
+      <code>$export</code>
+      <code>$export</code>
+      <code>$export</code>
+      <code>$export</code>
+    </InvalidArgument>
+    <MixedArgument occurrences="1">
+      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$countryCode</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess occurrences="19">
+      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_1_NAME]</code>
+      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_2_NAME]</code>
+      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_3_NAME]</code>
+      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_3_CODE]</code>
+      <code>$place[GeoBuilder::PLACE_NAME]</code>
+      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
+      <code>$place[GeoBuilder::ADMIN_3_CODE]</code>
+      <code>$place[GeoBuilder::POSTAL_CODE]</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="4">
+      <code>$this-&gt;admins1[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
+      <code>$this-&gt;admins2[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
+      <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
+      <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="4">
+      <code>$this-&gt;admins1[$place[GeoBuilder::COUNTRY_CODE]]</code>
+      <code>$this-&gt;admins2[$place[GeoBuilder::COUNTRY_CODE]]</code>
+      <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]]</code>
+      <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="1">
+      <code>$place</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Reader/HierarchyJsonReader.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>json_decode($content, true)</code>
+    </MixedReturnStatement>
+    <PossiblyFalseArgument occurrences="1">
+      <code>$content</code>
+    </PossiblyFalseArgument>
+  </file>
+  <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
+    <InvalidArgument occurrences="2">
+      <code>$values</code>
+      <code>$values</code>
+    </InvalidArgument>
+  </file>
+</files>

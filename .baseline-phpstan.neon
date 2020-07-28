@@ -36,26 +36,6 @@ parameters:
 			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
 
 		-
-			message: "#^Function asort is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\asort;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
-			count: 1
-			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
-
-		-
-			message: "#^Function array_flip is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\array_flip;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
-			count: 1
-			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
-
-		-
-			message: "#^PHPDoc tag @var has invalid value \\(\\)\\: Unexpected token \"\\*/\", expected type at offset 10$#"
-			count: 1
-			path: src/Command/BuildCommand.php
-
-		-
-			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:\\$dumpDir has no typehint specified\\.$#"
-			count: 1
-			path: src/Command/BuildCommand.php
-
-		-
 			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:\\$availableCountries type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Command/BuildCommand.php
@@ -111,12 +91,12 @@ parameters:
 			path: src/Exception/BuildException.php
 
 		-
-			message: "#^Function mkdir is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\mkdir;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
+			message: "#^Negated boolean expression is always true\\.$#"
 			count: 1
 			path: src/Helper/FileWriter.php
 
 		-
-			message: "#^Function sprintf is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\sprintf;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
+			message: "#^Result of function Safe\\\\mkdir \\(void\\) is used\\.$#"
 			count: 1
 			path: src/Helper/FileWriter.php
 
@@ -189,21 +169,6 @@ parameters:
 			message: "#^Variable \\$admins3 in PHPDoc tag @var does not match any variable in the foreach loop\\: \\$admin3, \\$places$#"
 			count: 1
 			path: src/Reader/HierarchyJsonDumper.php
-
-		-
-			message: "#^Function file_get_contents is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\file_get_contents;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
-			count: 1
-			path: src/Reader/HierarchyJsonReader.php
-
-		-
-			message: "#^Function json_decode is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\json_decode;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
-			count: 1
-			path: src/Reader/HierarchyJsonReader.php
-
-		-
-			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
-			count: 1
-			path: src/Reader/HierarchyJsonReader.php
 
 		-
 			message: "#^Parameter \\#1 \\$submittedData of method Symfony\\\\Component\\\\Form\\\\FormInterface\\:\\:submit\\(\\) expects array\\|string\\|null, stdClass given\\.$#"

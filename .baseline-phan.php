@@ -16,14 +16,13 @@ return [
     // PhanUnreferencedUseNormal : 2 occurrences
     // PhanRedefinedExtendedClass : 1 occurrence
     // PhanUndeclaredExtendedClass : 1 occurrence
-    // PhanUnextractableAnnotation : 1 occurrence
     // PhanUnreferencedClosure : 1 occurrence
     // PhanUnreferencedProtectedProperty : 1 occurrence
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
     'file_suppressions' => [
         'src/Bridge/Symfony/Form/Type/HierarchyJsonType.php' => ['PhanUnreferencedUseNormal'],
-        'src/Command/BuildCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanUndeclaredMethod', 'PhanUnextractableAnnotation', 'PhanUnreferencedClosure', 'PhanUnreferencedProtectedProperty'],
+        'src/Command/BuildCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanUndeclaredMethod', 'PhanUnreferencedClosure', 'PhanUnreferencedProtectedProperty'],
         'tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php' => ['PhanUndeclaredExtendedClass', 'PhanUndeclaredMethod', 'PhanUndeclaredProperty', 'PhanUndeclaredStaticMethod'],
         'tests/Reader/HierarchyJsonTest.php' => ['PhanUnreferencedUseNormal'],
     ],

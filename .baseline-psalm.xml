@@ -2,18 +2,18 @@
 <files psalm-version="3.12.2@7c7ebd068f8acaba211d4a2c707c4ba90874fa26">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
     <MixedArgument occurrences="12">
-      <code>$options['country']</code>
+      <code>$options[self::COUNTRY_FIELD]</code>
       <code>$data</code>
       <code>$data</code>
-      <code>$options['country']</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, 'admin1')</code>
+      <code>$options[self::COUNTRY_FIELD]</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
       <code>$data</code>
       <code>$data</code>
       <code>$data</code>
       <code>$data</code>
-      <code>$options['country']</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, 'admin1')</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, 'admin2')</code>
+      <code>$options[self::COUNTRY_FIELD]</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
     </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$data</code>
@@ -24,10 +24,9 @@
     </MoreSpecificImplementedParamType>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <MixedArgument occurrences="3">
+    <MixedArgument occurrences="2">
       <code>$requestedCountry</code>
       <code>$requestedCountry</code>
-      <code>$this-&gt;dumpDir</code>
     </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$requestedCountry</code>
@@ -45,9 +44,6 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Exception/BuildException.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>new self(sprintf('Impossible to find the source file for country %s.', $requestedCountry))</code>
-    </LessSpecificReturnStatement>
     <MissingParamType occurrences="2">
       <code>$message</code>
       <code>$code</code>
@@ -56,9 +52,6 @@
       <code>$message</code>
       <code>$code</code>
     </MixedArgument>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="src/Helper/FileWriter.php">
     <PossiblyFalseArgument occurrences="1">
@@ -132,16 +125,20 @@
       <code>array</code>
     </MixedInferredReturnType>
     <MixedReturnStatement occurrences="1">
-      <code>json_decode($content, true)</code>
+      <code>\Safe\json_decode($content, true)</code>
     </MixedReturnStatement>
-    <PossiblyFalseArgument occurrences="1">
-      <code>$content</code>
-    </PossiblyFalseArgument>
   </file>
   <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
     <InvalidArgument occurrences="2">
       <code>$values</code>
       <code>$values</code>
     </InvalidArgument>
+  </file>
+  <file src="vendor-bin/phpunit/vendor/phpunit/phpunit/src/Framework/MockObject/Builder/ParametersMatch.php">
+    <ParseError occurrences="3">
+      <code>Match</code>
+      <code>;</code>
+      <code>;</code>
+    </ParseError>
   </file>
 </files>

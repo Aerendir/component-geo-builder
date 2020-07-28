@@ -20,8 +20,9 @@ use Throwable;
 
 /**
  * Contains all exception throwable by BuildCommand.
+ * @see \SerendipityHQ\Component\GeoBuilder\Tests\Exception\BuildExceptionTest
  */
-class BuildException extends \Exception
+final class BuildException extends \Exception
 {
     /**
      * {@inheritdoc}

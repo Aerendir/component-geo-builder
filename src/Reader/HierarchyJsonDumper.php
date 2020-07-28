@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 /**
  * Dumps into the given folder the content of the parsed dump from GeoNames.
  */
-class HierarchyJsonDumper implements DumperInterface
+final class HierarchyJsonDumper implements DumperInterface
 {
     /** @var JsonEncode $encoder */
     private $encoder;
@@ -98,7 +98,7 @@ class HierarchyJsonDumper implements DumperInterface
      */
     private function addCountry(string $countryCode): void
     {
-        if (false === in_array($countryCode, $this->countries, true)) {
+        if (false === \in_array($countryCode, $this->countries, true)) {
             $this->countries[] = $countryCode;
         }
     }
@@ -143,7 +143,7 @@ class HierarchyJsonDumper implements DumperInterface
          * @var array<string,string> $admins1
          */
         foreach ($this->admins1 as $countryCode => $admins1) {
-            $filename = strtoupper($countryCode) . '.json';
+            $filename = \strtoupper($countryCode) . '.json';
             $export   = $this->encoder->encode($admins1, JsonEncoder::FORMAT);
             FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
         }

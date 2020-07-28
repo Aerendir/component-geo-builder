@@ -20,8 +20,9 @@ use Symfony\Component\Serializer\Encoder\CsvEncoder;
 
 /**
  * Parses the content of a dump from GeoNames.
+ * @see \SerendipityHQ\Component\GeoBuilder\Tests\ParserTest
  */
-class Parser
+final class Parser
 {
     /**
      * @param string $filePath the txt file from Geonames

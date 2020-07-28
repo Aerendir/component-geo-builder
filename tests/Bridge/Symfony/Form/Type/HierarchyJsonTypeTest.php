@@ -21,7 +21,7 @@ use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 /**
  * Tests the HierarchyJsonTypeTest class.
  */
-class HierarchyJsonTypeTest extends TypeTestCase
+final class HierarchyJsonTypeTest extends TypeTestCase
 {
     public function testHierarchyJsonTypeRequiresCountry(): void
     {
@@ -31,34 +31,34 @@ class HierarchyJsonTypeTest extends TypeTestCase
 
     public function testHierarchyJsonTypeShowsOnlyAdmin1(): void
     {
-        $form = $this->factory->create(HierarchyJsonType::class, [], ['data_class' => null, 'country' => 'IT']);
+        $form = $this->factory->create(HierarchyJsonType::class, [], ['data_class' => null, HierarchyJsonType::COUNTRY_FIELD => 'IT']);
 
         // submit the data to the form directly
         $form->submit([]);
 
-        $this::assertTrue($form->isSynchronized());
+        self::assertTrue($form->isSynchronized());
 
         $view     = $form->createView();
         $children = $view->children;
 
-        $this::assertArrayHasKey('admin1', $children);
-        $this::assertArrayNotHasKey('admin2', $children);
-        $this::assertArrayNotHasKey('admin3', $children);
+        self::assertArrayHasKey(HierarchyJsonType::ADMIN1_FIELD, $children);
+        self::assertArrayNotHasKey(HierarchyJsonType::ADMIN2_FIELD, $children);
+        self::assertArrayNotHasKey(HierarchyJsonType::ADMIN3_FIELD, $children);
     }
 
     public function testHierarchyJsonTypeShowsOnlyAdmin1AndAdmin2(): void
     {
         $expected = [
-            'admin1' => 'CM',
-            'admin2' => null,
+            HierarchyJsonType::ADMIN1_FIELD => 'CM',
+            HierarchyJsonType::ADMIN2_FIELD => null,
         ];
 
         $values         = new \stdClass();
-        $values->admin1 = $expected['admin1'];
+        $values->admin1 = $expected[HierarchyJsonType::ADMIN1_FIELD];
         $values->admin2 = null;
         $values->admin3 = null;
 
-        $form = $this->factory->create(HierarchyJsonType::class, [], ['data_class' => null, 'country' => 'IT']);
+        $form = $this->factory->create(HierarchyJsonType::class, [], ['data_class' => null, HierarchyJsonType::COUNTRY_FIELD => 'IT']);
 
         // submit the data to the form directly
         $form->submit($values);
@@ -66,25 +66,25 @@ class HierarchyJsonTypeTest extends TypeTestCase
         $view     = $form->createView();
         $children = $view->children;
 
-        $this::assertArrayHasKey('admin1', $children);
-        $this::assertArrayHasKey('admin2', $children);
-        $this::assertArrayNotHasKey('admin3', $children);
+        self::assertArrayHasKey(HierarchyJsonType::ADMIN1_FIELD, $children);
+        self::assertArrayHasKey(HierarchyJsonType::ADMIN2_FIELD, $children);
+        self::assertArrayNotHasKey(HierarchyJsonType::ADMIN3_FIELD, $children);
     }
 
     public function testHierarchyJsonTypeShowsOnlyAdmin1AndAdmin2AndAdmin3(): void
     {
         $expected = [
-            'admin1' => 'CM',
-            'admin2' => 'NA',
-            'admin3' => null,
+            HierarchyJsonType::ADMIN1_FIELD => 'CM',
+            HierarchyJsonType::ADMIN2_FIELD => 'NA',
+            HierarchyJsonType::ADMIN3_FIELD => null,
         ];
 
         $values         = new \stdClass();
-        $values->admin1 = $expected['admin1'];
-        $values->admin2 = $expected['admin2'];
-        $values->admin3 = $expected['admin3'];
+        $values->admin1 = $expected[HierarchyJsonType::ADMIN1_FIELD];
+        $values->admin2 = $expected[HierarchyJsonType::ADMIN2_FIELD];
+        $values->admin3 = $expected[HierarchyJsonType::ADMIN3_FIELD];
 
-        $form = $this->factory->create(HierarchyJsonType::class, [], ['data_class' => null, 'country' => 'IT']);
+        $form = $this->factory->create(HierarchyJsonType::class, [], ['data_class' => null, HierarchyJsonType::COUNTRY_FIELD => 'IT']);
 
         // submit the data to the form directly
         $form->submit($values);
@@ -92,9 +92,9 @@ class HierarchyJsonTypeTest extends TypeTestCase
         $view     = $form->createView();
         $children = $view->children;
 
-        $this::assertArrayHasKey('admin1', $children);
-        $this::assertArrayHasKey('admin2', $children);
-        $this::assertArrayHasKey('admin3', $children);
+        self::assertArrayHasKey(HierarchyJsonType::ADMIN1_FIELD, $children);
+        self::assertArrayHasKey(HierarchyJsonType::ADMIN2_FIELD, $children);
+        self::assertArrayHasKey(HierarchyJsonType::ADMIN3_FIELD, $children);
     }
 
     /**

@@ -24,15 +24,35 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
  * Form type to manage User's permissions.
+ * @see \SerendipityHQ\Component\GeoBuilder\Tests\Bridge\Symfony\Form\Type\HierarchyJsonTypeTest
  */
-class HierarchyJsonType extends AbstractType
+final class HierarchyJsonType extends AbstractType
 {
+    /** @var string */
+    public const COUNTRY_FIELD = 'country';
+
+    /** @var string */
+    public const ADMIN1_FIELD = 'admin1';
+
+    /** @var string */
+    public const ADMIN2_FIELD = 'admin2';
+
+    /** @var string */
+    public const ADMIN3_FIELD = 'admin3';
+
+    /** @var string */
+    private const CHOICES = 'choices';
+
+    /** @var string */
+    private const PLACEHOLDER = 'placeholder';
+
+    /** @var string */
+    private const REQUIRED = 'required';
+
     /** @var HierarchyJsonReader $reader */
     private $reader;
 
-    /**
-     * @var PropertyAccessor
-     */
+    /** @var PropertyAccessor $propertyAccessor*/
     private $propertyAccessor;
 
     /**
@@ -52,9 +72,9 @@ class HierarchyJsonType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $choices = $this->reader->read($options['country']);
+        $choices = $this->reader->read($options[self::COUNTRY_FIELD]);
         $choices = $this->prepareChoices($choices);
-        $builder->add('admin1', ChoiceType::class, ['choices' => $choices, 'placeholder' => '', 'required' => false]);
+        $builder->add(self::ADMIN1_FIELD, ChoiceType::class, [self::CHOICES => $choices, self::PLACEHOLDER => '', self::REQUIRED => false]);
 
         $this->addAdmin2Field($builder, $options);
         $this->addAdmin3Field($builder, $options);
@@ -67,17 +87,17 @@ class HierarchyJsonType extends AbstractType
     public function addAdmin2Field(FormBuilderInterface $builder, array $options): void
     {
         $type          = $this;
-        $addAccessForm = static function (FormEvent $event) use ($options, $type) {
+        $addAccessForm = static function (FormEvent $event) use ($options, $type): void {
             $data = $event->getData();
 
-            if (is_array($data)) {
+            if (\is_array($data)) {
                 return;
             }
 
-            if (null !== $type->propertyAccessor->getValue($data, 'admin1')) {
-                $choices = $type->reader->read($options['country'], $type->propertyAccessor->getValue($data, 'admin1'));
+            if (null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)) {
+                $choices = $type->reader->read($options[self::COUNTRY_FIELD], $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD));
                 $choices = $type->prepareChoices($choices);
-                $event->getForm()->add('admin2', ChoiceType::class, ['choices' => $choices, 'placeholder' => '', 'required' => false]);
+                $event->getForm()->add(self::ADMIN2_FIELD, ChoiceType::class, [self::CHOICES => $choices, self::PLACEHOLDER => '', self::REQUIRED => false]);
             }
         };
 
@@ -92,17 +112,17 @@ class HierarchyJsonType extends AbstractType
     public function addAdmin3Field(FormBuilderInterface $builder, array $options): void
     {
         $type          = $this;
-        $addAccessForm = static function (FormEvent $event) use ($options, $type) {
+        $addAccessForm = static function (FormEvent $event) use ($options, $type): void {
             $data = $event->getData();
 
-            if (is_array($data)) {
+            if (\is_array($data)) {
                 return;
             }
 
-            if (null !== $type->propertyAccessor->getValue($data, 'admin1') && null !== $type->propertyAccessor->getValue($data, 'admin2')) {
-                $choices = $type->reader->read($options['country'], $type->propertyAccessor->getValue($data, 'admin1'), $type->propertyAccessor->getValue($data, 'admin2'));
+            if (null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD) && null !== $type->propertyAccessor->getValue($data, self::ADMIN2_FIELD)) {
+                $choices = $type->reader->read($options[self::COUNTRY_FIELD], $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD), $type->propertyAccessor->getValue($data, self::ADMIN2_FIELD));
                 $choices = $type->prepareChoices($choices);
-                $event->getForm()->add('admin3', ChoiceType::class, ['choices' => $choices, 'placeholder' => '', 'required' => false]);
+                $event->getForm()->add('admin3', ChoiceType::class, [self::CHOICES => $choices, self::PLACEHOLDER => '', self::REQUIRED => false]);
             }
         };
 
@@ -116,10 +136,10 @@ class HierarchyJsonType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'country' => null,
+            self::COUNTRY_FIELD => null,
                                ]);
 
-        $resolver->setAllowedTypes('country', ['string']);
+        $resolver->setAllowedTypes(self::COUNTRY_FIELD, ['string']);
     }
 
     /**
@@ -129,8 +149,8 @@ class HierarchyJsonType extends AbstractType
      */
     private function prepareChoices(array $values): array
     {
-        asort($values, SORT_NATURAL);
+        \Safe\asort($values, SORT_NATURAL);
 
-        return array_flip($values);
+        return \Safe\array_flip($values);
     }
 }

@@ -19,7 +19,7 @@ namespace SerendipityHQ\Component\GeoBuilder;
  *
  * @codeCoverageIgnore
  */
-class GeoBuilder
+final class GeoBuilder
 {
     /** @var int */
     public const COUNTRY_CODE = 0;

@@ -18,7 +18,7 @@ use SerendipityHQ\Component\GeoBuilder\Parser;
 /**
  * Tests Parser.
  */
-class ParserTest extends TestCase
+final class ParserTest extends TestCase
 {
     public function testNoSourceFileFound(): void
     {

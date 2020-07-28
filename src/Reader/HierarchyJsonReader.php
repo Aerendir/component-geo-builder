@@ -20,7 +20,7 @@ use SerendipityHQ\Component\GeoBuilder\ReaderInterface;
 /**
  * Reader for the hierarchy json dumps.
  */
-class HierarchyJsonReader implements ReaderInterface
+final class HierarchyJsonReader implements ReaderInterface
 {
     /** @var string $dataFolderPath */
     private $dataFolderPath;
@@ -40,8 +40,8 @@ class HierarchyJsonReader implements ReaderInterface
     {
         $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');
         $filePath = $this->dataFolderPath . DIRECTORY_SEPARATOR . $fileName;
-        $content  = file_get_contents($filePath);
+        $content  = \Safe\file_get_contents($filePath);
 
-        return json_decode($content, true);
+        return \Safe\json_decode($content, true);
     }
 }

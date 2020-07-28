@@ -21,7 +21,7 @@ use function Safe\file_put_contents;
 /**
  * Helper class to deal with file writing.
  */
-class FileWriter
+final class FileWriter
 {
     /**
      * Writes a file ensuring the entire path exists.
@@ -34,13 +34,13 @@ class FileWriter
      */
     public static function writeFile(string $dir, string $contents): void
     {
-        $parts = explode(DIRECTORY_SEPARATOR, $dir);
-        $file  = array_pop($parts);
+        $parts = \explode(DIRECTORY_SEPARATOR, $dir);
+        $file  = \array_pop($parts);
         $dir   = '';
 
         foreach ($parts as $part) {
-            if ( ! is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! mkdir($dir) && ! is_dir($dir)) {
-                throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
+            if ( ! \is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! \Safe\mkdir($dir) && ! \is_dir($dir)) {
+                throw new \RuntimeException(\Safe\sprintf('Directory "%s" was not created', $dir));
             }
         }
 
@@ -55,7 +55,7 @@ class FileWriter
      */
     public static function buildFileName(array $fileNameParts, string $ext): string
     {
-        return strtoupper(implode('_', self::removeEmpties($fileNameParts))) . $ext;
+        return \strtoupper(\implode('_', self::removeEmpties($fileNameParts))) . $ext;
     }
 
     /**
@@ -65,6 +65,6 @@ class FileWriter
      */
     private static function removeEmpties(array $fileName): array
     {
-        return array_filter($fileName, static function ($value): bool { return ! empty($value); });
+        return \array_filter($fileName, static function ($value): bool { return ! empty($value); });
     }
 }

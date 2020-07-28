@@ -22,36 +22,38 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 /**
  * Tests Parser.
  */
-class HierarchyJsonTest extends TestCase
+final class HierarchyJsonTest extends TestCase
 {
+    // This is the first result of the parsed file
+    /**
+     * @var string[][]
+     */
+    private const TEST = [[
+        0 => 'IT',
+        1 => '67010',
+        2 => 'Barete',
+        3 => 'Abruzzi',
+        4 => 'AB',
+        5 => "L'Aquila",
+        6 => 'AQ',
+        7 => '',
+        8 => '',
+        9 => '42.4501',
+        10=> '13.2806',
+        11=> '4',
+    ]];
     public function testDumperAndReader(): void
     {
-        $dumpFolder          = sys_get_temp_dir();
+        $dumpFolder          = \sys_get_temp_dir();
         $hierarchyJsonDumper = new HierarchyJsonDumper();
         $hierarchyJsonReader = new HierarchyJsonReader($dumpFolder);
-
-        // This is the first result of the parsed file
-        $test = [[
-            0 => 'IT',
-            1 => '67010',
-            2 => 'Barete',
-            3 => 'Abruzzi',
-            4 => 'AB',
-            5 => "L'Aquila",
-            6 => 'AQ',
-            7 => '',
-            8 => '',
-            9 => '42.4501',
-            10=> '13.2806',
-            11=> '4',
-        ]];
         $jsonData           = ['AB' => 'Abruzzi'];
         $expectedAdmin1Dump = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
         $jsonData           = ['AQ' => "L'Aquila"];
         $expectedAdmin2Dump = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
         $jsonData           = [67010 => 'Barete'];
         $expectedAdmin3Dump = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
-        $hierarchyJsonDumper->dump($dumpFolder, $test);
+        $hierarchyJsonDumper->dump($dumpFolder, self::TEST);
 
         $admin1 = file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT.json');
         $admin2 = file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT_AB.json');

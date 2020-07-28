@@ -41,7 +41,7 @@ use Symfony\Component\DomCrawler\Crawler;
 /**
  * Builds the geo lists.
  */
-class BuildCommand extends Command
+final class BuildCommand extends Command
 {
     /** @var string */
     private const DATA_URL = 'https://www.geonames.org/export/zip/';
@@ -55,7 +55,7 @@ class BuildCommand extends Command
     /** @var Client $client */
     private $client;
 
-    /** @var  */
+    /** @var string */
     private $dumpDir;
 
     /** @var SerendipityHQStyle $ioWriter */
@@ -139,7 +139,7 @@ class BuildCommand extends Command
             ->filterXPath('//html/body/pre[1]/a')
             ->reduce(static function (Crawler $node): bool {
                 $value = $node->text();
-                $length = strlen(self::EXT);
+                $length = \strlen(self::EXT);
 
                 return self::EXT === substr($value, -$length);
             })
@@ -158,7 +158,7 @@ class BuildCommand extends Command
     private function checkRequestedCountriesAreAvailable(array $requestedCountries): bool
     {
         foreach ($requestedCountries as $requestedCountry) {
-            if (false === in_array(sprintf('%s%s', strtoupper($requestedCountry), self::EXT), $this->availableCountries, true)) {
+            if (false === \in_array(sprintf('%s%s', \strtoupper($requestedCountry), self::EXT), $this->availableCountries, true)) {
                 $this->ioWriter->error(sprintf('The country "%s" you requested is not available on GeoNames', $requestedCountry));
 
                 return false;
@@ -179,7 +179,7 @@ class BuildCommand extends Command
     private function processRequestedCountries(OutputInterface $output, array $requestedCountries): void
     {
         $this->ioWriter->writeln('Starting to process requested countries');
-        $progress = new ProgressBar($output, count($requestedCountries));
+        $progress = new ProgressBar($output, \count($requestedCountries));
         foreach ($requestedCountries as $requestedCountry) {
             /** @var ConsoleSectionOutput $sectionOutput */
             $sectionOutput = $output->section();
@@ -226,9 +226,9 @@ class BuildCommand extends Command
      */
     private function downloadRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry): string
     {
-        $tmpFileName = tempnam(sys_get_temp_dir(), 'geobuilder');
+        $tmpFileName = tempnam(\sys_get_temp_dir(), 'geobuilder');
         $progress    = new ProgressBar($output, 0, 1);
-        $this->client->request('GET', sprintf('%s%s%s', self::DATA_URL, strtoupper($requestedCountry), self::EXT), [
+        $this->client->request('GET', sprintf('%s%s%s', self::DATA_URL, \strtoupper($requestedCountry), self::EXT), [
             RequestOptions::SINK => $tmpFileName,
             // Vote up https://stackoverflow.com/a/34923682/1399706
             RequestOptions::PROGRESS => static function (int $dlSize, int $dlDownloaded) use ($progress): void {
@@ -266,15 +266,15 @@ class BuildCommand extends Command
             throw new \RuntimeException('Impossile to unzip the source file of the country.');
         }
 
-        $tmpFolder = tempnam(sys_get_temp_dir(), 'geobuilder');
-        if (false === is_dir($tmpFolder)) {
-            if (file_exists($tmpFolder)) {
+        $tmpFolder = tempnam(\sys_get_temp_dir(), 'geobuilder');
+        if (false === \is_dir($tmpFolder)) {
+            if (\file_exists($tmpFolder)) {
                 unlink($tmpFolder);
             }
 
             mkdir($tmpFolder);
 
-            if ( ! is_dir($tmpFolder)) {
+            if ( ! \is_dir($tmpFolder)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $tmpFolder));
             }
         }
@@ -298,13 +298,13 @@ class BuildCommand extends Command
     private function decodeUnzippedCountry(string $requestedCountry, string $unzippedCountry): array
     {
         $fileName = null;
-        if (2 === strlen($requestedCountry)) {
-            $fileName = sprintf('%s.txt', strtoupper($requestedCountry));
+        if (2 === \strlen($requestedCountry)) {
+            $fileName = sprintf('%s.txt', \strtoupper($requestedCountry));
         }
 
         $filePath = sprintf('%s/%s', $unzippedCountry, $fileName);
 
-        if (false === file_exists($filePath)) {
+        if (false === \file_exists($filePath)) {
             throw BuildException::noSourceFileFound($requestedCountry);
         }
 

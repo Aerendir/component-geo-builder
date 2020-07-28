@@ -19,16 +19,18 @@ use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
 /**
  * Tests BuildException.
  */
-class BuildExceptionTest extends TestCase
+final class BuildExceptionTest extends TestCase
 {
+    /** @var string */
+    private const REQUESTED_COUNTRY = 'it';
+
     /**
      * @throws BuildException
      * @throws StringsException
      */
     public function testNoSourceFileFound(): void
     {
-        $requestedCountry = 'it';
         $this->expectException(BuildException::class);
-        throw BuildException::noSourceFileFound($requestedCountry);
+        throw BuildException::noSourceFileFound(self::REQUESTED_COUNTRY);
     }
 }

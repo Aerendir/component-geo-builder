@@ -1,13 +1,12 @@
 <?php
 
 /*
- * This file is part of GeoBuilder.
+ * This file is part of the Serendipity HQ Geo Builder Component.
  *
- * Copyright Adamo Aerendir Crespi 2020.
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
  *
- * @author    Adamo Aerendir Crespi <hello@aerendir.me>
- * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
- * @license   MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace SerendipityHQ\Component\GeoBuilder\Bridge\Symfony\Form\Type;
@@ -24,6 +23,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
  * Form type to manage User's permissions.
+ *
  * @see \SerendipityHQ\Component\GeoBuilder\Tests\Bridge\Symfony\Form\Type\HierarchyJsonTypeTest
  */
 final class HierarchyJsonType extends AbstractType
@@ -52,7 +52,7 @@ final class HierarchyJsonType extends AbstractType
     /** @var HierarchyJsonReader $reader */
     private $reader;
 
-    /** @var PropertyAccessor $propertyAccessor*/
+    /** @var PropertyAccessor $propertyAccessor */
     private $propertyAccessor;
 
     /**

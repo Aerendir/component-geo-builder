@@ -1,13 +1,12 @@
 <?php
 
 /*
- * This file is part of GeoBuilder.
+ * This file is part of the Serendipity HQ Geo Builder Component.
  *
- * Copyright Adamo Aerendir Crespi 2020.
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
  *
- * @author    Adamo Aerendir Crespi <hello@aerendir.me>
- * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
- * @license   MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace SerendipityHQ\Component\GeoBuilder\Tests\Reader;
@@ -42,17 +41,18 @@ final class HierarchyJsonTest extends TestCase
         10=> '13.2806',
         11=> '4',
     ]];
+
     public function testDumperAndReader(): void
     {
         $dumpFolder          = \sys_get_temp_dir();
         $hierarchyJsonDumper = new HierarchyJsonDumper();
         $hierarchyJsonReader = new HierarchyJsonReader($dumpFolder);
-        $jsonData           = ['AB' => 'Abruzzi'];
-        $expectedAdmin1Dump = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
-        $jsonData           = ['AQ' => "L'Aquila"];
-        $expectedAdmin2Dump = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
-        $jsonData           = [67010 => 'Barete'];
-        $expectedAdmin3Dump = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
+        $jsonData            = ['AB' => 'Abruzzi'];
+        $expectedAdmin1Dump  = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
+        $jsonData            = ['AQ' => "L'Aquila"];
+        $expectedAdmin2Dump  = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
+        $jsonData            = [67010 => 'Barete'];
+        $expectedAdmin3Dump  = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
         $hierarchyJsonDumper->dump($dumpFolder, self::TEST);
 
         $admin1 = file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT.json');

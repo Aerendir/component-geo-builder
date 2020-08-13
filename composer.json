@@ -4,9 +4,9 @@
     "type": "library",
     "license": "MIT",
     "keywords": ["geonames"],
-    "homepage": "https://github.com/Aerendir/component-geo-names",
+    "homepage": "https://github.com/Aerendir/component-geo-builder",
     "support": {
-        "issues": "https://github.com/Aerendir/component-geo-names/issues"
+        "issues": "https://github.com/Aerendir/component-geo-builder/issues"
     },
     "authors": [
         {

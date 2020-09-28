@@ -17,7 +17,7 @@
     "require": {
         "php": "^7.3",
         "ext-zip": "*",
-        "guzzlehttp/guzzle": "^6.5 || ^7.0",
+        "guzzlehttp/guzzle": "^7.0",
         "serendipity_hq/console-styles-bundle": "dev-dev",
         "symfony/dom-crawler": "^4.4|^5.1",
         "symfony/serializer": "^4.4|^5.1",

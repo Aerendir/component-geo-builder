@@ -3,13 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of GeoBuilder.
+ * This file is part of the Serendipity HQ Geo Builder Component.
  *
- * Copyright Adamo Aerendir Crespi 2020.
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
  *
- * @author    Adamo Aerendir Crespi <hello@aerendir.me>
- * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
- * @license   MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace SerendipityHQ\Component\GeoBuilder\Reader;
@@ -20,7 +19,7 @@ use SerendipityHQ\Component\GeoBuilder\ReaderInterface;
 /**
  * Reader for the hierarchy json dumps.
  */
-class HierarchyJsonReader implements ReaderInterface
+final class HierarchyJsonReader implements ReaderInterface
 {
     /** @var string $dataFolderPath */
     private $dataFolderPath;
@@ -36,12 +35,12 @@ class HierarchyJsonReader implements ReaderInterface
     /**
      * {@inheritdoc}
      */
-    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null)
+    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array
     {
         $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');
         $filePath = $this->dataFolderPath . DIRECTORY_SEPARATOR . $fileName;
-        $content  = file_get_contents($filePath);
+        $content  = \Safe\file_get_contents($filePath);
 
-        return json_decode($content, true);
+        return \Safe\json_decode($content, true);
     }
 }

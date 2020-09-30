@@ -3,21 +3,24 @@
 declare(strict_types=1);
 
 /*
- * This file is part of GeoBuilder.
+ * This file is part of the Serendipity HQ Geo Builder Component.
  *
- * Copyright Adamo Aerendir Crespi 2020.
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
  *
- * @author    Adamo Aerendir Crespi <hello@aerendir.me>
- * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
- * @license   MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace SerendipityHQ\Component\GeoBuilder\Helper;
 
+use Safe\Exceptions\FilesystemException;
+use Safe\Exceptions\StringsException;
+use function Safe\file_put_contents;
+
 /**
  * Helper class to deal with file writing.
  */
-class FileWriter
+final class FileWriter
 {
     /**
      * Writes a file ensuring the entire path exists.
@@ -25,22 +28,22 @@ class FileWriter
      * @param string $dir
      * @param string $contents
      *
-     * @throws \Safe\Exceptions\FilesystemException
-     * @throws \Safe\Exceptions\StringsException
+     * @throws FilesystemException
+     * @throws StringsException
      */
     public static function writeFile(string $dir, string $contents): void
     {
-        $parts = explode(DIRECTORY_SEPARATOR, $dir);
-        $file  = array_pop($parts);
+        $parts = \explode(DIRECTORY_SEPARATOR, $dir);
+        $file  = \array_pop($parts);
         $dir   = '';
 
         foreach ($parts as $part) {
-            if ( ! is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! mkdir($dir) && ! is_dir($dir)) {
-                throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
+            if ( ! \is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! \Safe\mkdir($dir) && ! \is_dir($dir)) {
+                throw new \RuntimeException(\Safe\sprintf('Directory "%s" was not created', $dir));
             }
         }
 
-        \Safe\file_put_contents(\Safe\sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
+        file_put_contents(\Safe\sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
     }
 
     /**
@@ -51,7 +54,7 @@ class FileWriter
      */
     public static function buildFileName(array $fileNameParts, string $ext): string
     {
-        return strtoupper(implode('_', self::removeEmpties($fileNameParts))) . $ext;
+        return \strtoupper(\implode('_', self::removeEmpties($fileNameParts))) . $ext;
     }
 
     /**
@@ -61,6 +64,6 @@ class FileWriter
      */
     private static function removeEmpties(array $fileName): array
     {
-        return array_filter($fileName, static function ($value) { return ! empty($value); });
+        return \array_filter($fileName, static function ($value): bool { return ! empty($value); });
     }
 }

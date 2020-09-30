@@ -1,0 +1,182 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:buildForm\\(\\) has parameter \\$builder with no value type specified in iterable type Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:addAdmin2Field\\(\\) has parameter \\$builder with no value type specified in iterable type Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:addAdmin2Field\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:addAdmin3Field\\(\\) has parameter \\$builder with no value type specified in iterable type Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:addAdmin3Field\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:prepareChoices\\(\\) has parameter \\$values with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonType\\:\\:prepareChoices\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Bridge/Symfony/Form/Type/HierarchyJsonType.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:\\$availableCountries type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$requestedCountries of method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:checkRequestedCountriesAreAvailable\\(\\) expects array, array\\<string\\>\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Parameter \\#2 \\$requestedCountries of method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:processRequestedCountries\\(\\) expects array, array\\<string\\>\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:checkRequestedCountriesAreAvailable\\(\\) has parameter \\$requestedCountries with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:processRequestedCountries\\(\\) has parameter \\$requestedCountries with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Output\\\\OutputInterface\\:\\:section\\(\\)\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between false and int\\|true will always evaluate to false\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Negated boolean expression is always true\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Command\\\\BuildCommand\\:\\:decodeUnzippedCountry\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Command/BuildCommand.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\DumperInterface\\:\\:dump\\(\\) has parameter \\$parsedGeonamesDump with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DumperInterface.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Exception\\\\BuildException\\:\\:noSourceFileFound\\(\\) should return static\\(SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Exception\\\\BuildException\\) but returns SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Exception\\\\BuildException\\.$#"
+			count: 1
+			path: src/Exception/BuildException.php
+
+		-
+			message: "#^Negated boolean expression is always true\\.$#"
+			count: 1
+			path: src/Helper/FileWriter.php
+
+		-
+			message: "#^Result of function Safe\\\\mkdir \\(void\\) is used\\.$#"
+			count: 1
+			path: src/Helper/FileWriter.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Helper\\\\FileWriter\\:\\:buildFileName\\(\\) has parameter \\$fileNameParts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Helper/FileWriter.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Helper\\\\FileWriter\\:\\:removeEmpties\\(\\) has parameter \\$fileName with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Helper/FileWriter.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Helper\\\\FileWriter\\:\\:removeEmpties\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Helper/FileWriter.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Parser\\:\\:parse\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:\\$countries type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:\\$admins1 type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:\\$admins2 type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:\\$admins3 type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:\\$places type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:dump\\(\\) has parameter \\$parsedGeonamesDump with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonDumper\\:\\:rearrangeData\\(\\) has parameter \\$parsedGeonamesDump with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Parameter \\#2 \\$contents of static method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Helper\\\\FileWriter\\:\\:writeFile\\(\\) expects string, bool\\|float\\|int\\|string given\\.$#"
+			count: 5
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^PHPDoc tag @var above foreach loop does not specify variable name\\.$#"
+			count: 10
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Variable \\$admins3 in PHPDoc tag @var does not match any variable in the foreach loop\\: \\$admin3, \\$places$#"
+			count: 1
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
+			message: "#^Parameter \\#1 \\$submittedData of method Symfony\\\\Component\\\\Form\\\\FormInterface\\:\\:submit\\(\\) expects array\\|string\\|null, stdClass given\\.$#"
+			count: 2
+			path: tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Tests\\\\Bridge\\\\Symfony\\\\Form\\\\Type\\\\HierarchyJsonTypeTest\\:\\:getExtensions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php
+

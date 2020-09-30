@@ -3,13 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of GeoBuilder.
+ * This file is part of the Serendipity HQ Geo Builder Component.
  *
- * Copyright Adamo Aerendir Crespi 2020.
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
  *
- * @author    Adamo Aerendir Crespi <hello@aerendir.me>
- * @copyright Copyright (C) 2020 Aerendir. All rights reserved.
- * @license   MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace SerendipityHQ\Component\GeoBuilder;
@@ -31,7 +30,7 @@ interface ReaderInterface
      * @param string|null $admin3
      * @param string|null $place
      *
-     * @return array<string,string>
+     * @return array<int|string,string>
      */
-    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null);
+    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array;
 }

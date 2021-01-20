@@ -9,7 +9,7 @@
  */
 return [
     // # Issue statistics:
-    // PhanRedefinedClassReference : 20+ occurrences
+    // PhanRedefinedClassReference : 30+ occurrences
     // PhanUndeclaredStaticMethod : 10+ occurrences
     // PhanUndeclaredProperty : 4 occurrences
     // PhanUndeclaredMethod : 2 occurrences

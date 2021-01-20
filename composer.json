@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "ext-zip": "*",
         "guzzlehttp/guzzle": "^7.0",
         "serendipity_hq/console-styles-bundle": "dev-dev",

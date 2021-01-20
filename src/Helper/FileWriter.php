@@ -25,14 +25,22 @@ final class FileWriter
     /**
      * Writes a file ensuring the entire path exists.
      *
-     * @param string $dir
-     * @param string $contents
+     * @param string       $dir
+     * @param mixed|string $contents
      *
      * @throws FilesystemException
      * @throws StringsException
      */
-    public static function writeFile(string $dir, string $contents): void
+    public static function writeFile(string $dir, $contents): void
     {
+        // The content here is typically from a decode return value.
+        // PHPStan complains about it being string or boolean, but only using --prefer-lowest.
+        // This seems to be the easiest fix to make the build green.
+        // Check this to better understand: https://github.com/Aerendir/component-geo-builder/runs/1734149064
+        if (false === \is_string($contents)) {
+            throw new \RuntimeException('Something went wrong encoding the countries.');
+        }
+
         $parts = \explode(DIRECTORY_SEPARATOR, $dir);
         $file  = \array_pop($parts);
         $dir   = '';

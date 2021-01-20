@@ -70,13 +70,6 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Reader/HierarchyJsonDumper.php">
-    <DocblockTypeContradiction occurrences="5">
-      <code>false === \is_string($export)</code>
-      <code>false === \is_string($export)</code>
-      <code>false === \is_string($export)</code>
-      <code>false === \is_string($export)</code>
-      <code>false === \is_string($export)</code>
-    </DocblockTypeContradiction>
     <MixedArgument occurrences="1">
       <code>$place[GeoBuilder::COUNTRY_CODE]</code>
     </MixedArgument>
@@ -116,13 +109,6 @@
     <MixedAssignment occurrences="1">
       <code>$place</code>
     </MixedAssignment>
-    <RedundantConditionGivenDocblockType occurrences="5">
-      <code>\is_string($export)</code>
-      <code>\is_string($export)</code>
-      <code>\is_string($export)</code>
-      <code>\is_string($export)</code>
-      <code>\is_string($export)</code>
-    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Reader/HierarchyJsonReader.php">
     <MixedInferredReturnType occurrences="1">

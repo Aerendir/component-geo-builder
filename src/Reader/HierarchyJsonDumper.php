@@ -126,6 +126,11 @@ final class HierarchyJsonDumper implements DumperInterface
     private function dumpCountries(string $dumpPath): void
     {
         $export = $this->encoder->encode($this->countries, JsonEncoder::FORMAT);
+
+        if (false === \is_string($export)) {
+            throw new \RuntimeException('Something went wrong encoding the values.');
+        }
+
         FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . 'countries.json', $export);
     }
 
@@ -144,6 +149,11 @@ final class HierarchyJsonDumper implements DumperInterface
         foreach ($this->admins1 as $countryCode => $admins1) {
             $filename = \strtoupper($countryCode) . '.json';
             $export   = $this->encoder->encode($admins1, JsonEncoder::FORMAT);
+
+            if (false === \is_string($export)) {
+                throw new \RuntimeException('Something went wrong encoding the values.');
+            }
+
             FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
         }
     }
@@ -171,6 +181,11 @@ final class HierarchyJsonDumper implements DumperInterface
                     $admin1,
                 ], '.json');
                 $export = $this->encoder->encode($admins2, JsonEncoder::FORMAT);
+
+                if (false === \is_string($export)) {
+                    throw new \RuntimeException('Something went wrong encoding the values.');
+                }
+
                 FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
             }
         }
@@ -205,6 +220,11 @@ final class HierarchyJsonDumper implements DumperInterface
                             $admin2,
                         ], '.json');
                     $export = $this->encoder->encode($admins3, JsonEncoder::FORMAT);
+
+                    if (false === \is_string($export)) {
+                        throw new \RuntimeException('Something went wrong encoding the values.');
+                    }
+
                     FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                 }
             }
@@ -246,6 +266,11 @@ final class HierarchyJsonDumper implements DumperInterface
                                 $admin3,
                             ], '.json');
                         $export = $this->encoder->encode($places, JsonEncoder::FORMAT);
+
+                        if (false === \is_string($export)) {
+                            throw new \RuntimeException('Something went wrong encoding the values.');
+                        }
+
                         FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                     }
                 }

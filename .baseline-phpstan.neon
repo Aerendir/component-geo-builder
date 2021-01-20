@@ -166,6 +166,11 @@ parameters:
 			path: src/Reader/HierarchyJsonDumper.php
 
 		-
+			message: "#^Strict comparison using \\=\\=\\= between false and true will always evaluate to false\\.$#"
+			count: 5
+			path: src/Reader/HierarchyJsonDumper.php
+
+		-
 			message: "#^PHPDoc tag @var above foreach loop does not specify variable name\\.$#"
 			count: 10
 			path: src/Reader/HierarchyJsonDumper.php

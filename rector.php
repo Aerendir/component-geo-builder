@@ -13,12 +13,13 @@ declare(strict_types = 1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Rector\Core\Configuration\Option;
+use Rector\Core\ValueObject\PhpVersion;
 use Rector\Set\ValueObject\SetList;
 
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::PHP_VERSION_FEATURES, '7.3');
+    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_73);
 
     $parameters->set(Option::PATHS, [__DIR__ . '/src', __DIR__ . '/tests']);
 
@@ -39,7 +40,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             SetList::PHP_71,
             SetList::PHP_72,
             SetList::PHP_73,
-            SetList::PHPSTAN,
+            SetList::PHP_74,
             SetList::PHPUNIT_40,
             SetList::PHPUNIT_50,
             SetList::PHPUNIT_60,
@@ -54,7 +55,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             SetList::PHPUNIT_SPECIFIC_METHOD,
             SetList::PHPUNIT_YIELD_DATA_PROVIDER,
             SetList::UNWRAP_COMPAT,
-            SetList::SOLID,
             SetList::SYMFONY_26,
             SetList::SYMFONY_28,
             SetList::SYMFONY_30,
@@ -79,7 +79,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
     $parameters->set(Option::IMPORT_SHORT_CLASSES, false);
 
     $parameters->set(
-        Option::EXCLUDE_RECTORS,
+        Option::SKIP,
         [
             Rector\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRector::class,
             Rector\CodeQuality\Rector\Concat\JoinStringConcatRector::class,
@@ -92,10 +92,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             Rector\CodingStyle\Rector\Throw_\AnnotateThrowablesRector::class,
             Rector\CodingStyle\Rector\Use_\RemoveUnusedAliasRector::class,
             Rector\Php56\Rector\FunctionLike\AddDefaultValueForUndefinedVariableRector::class, // Maybe good one day
-            Rector\SOLID\Rector\ClassMethod\UseInterfaceOverImplementationInConstructorRector::class,
-            Rector\SOLID\Rector\If_\ChangeAndIfToEarlyReturnRector::class,
-            Rector\SOLID\Rector\Property\AddFalseDefaultToBoolPropertyRector::class,
-            Rector\SOLID\Rector\ClassMethod\UseInterfaceOverImplementationInConstructorRector::class,
             Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector::class,
             Rector\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector::class,
         ]

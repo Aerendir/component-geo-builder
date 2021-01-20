@@ -24,7 +24,7 @@ jobs:
 
             - name: Install Composer deps
               run: |
-                  composer update --no-interaction --no-suggest
+                  composer update --no-interaction --no-suggest --with-all-dependencies
 
             - name: Run PHP CS Fixer
               run: |

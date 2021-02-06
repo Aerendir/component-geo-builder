@@ -22,8 +22,6 @@ use function Safe\sprintf;
 use function Safe\substr;
 use function Safe\tempnam;
 use function Safe\unlink;
-use SerendipityHQ\Bundle\ConsoleStyles\Console\Formatter\SerendipityHQOutputFormatter;
-use SerendipityHQ\Bundle\ConsoleStyles\Console\Style\SerendipityHQStyle;
 use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
 use SerendipityHQ\Component\GeoBuilder\Parser;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
@@ -35,6 +33,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\ConsoleSectionOutput;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -57,7 +56,7 @@ final class BuildCommand extends Command
     /** @var string */
     private $dumpDir;
 
-    /** @var SerendipityHQStyle $ioWriter */
+    /** @var SymfonyStyle $ioWriter */
     private $ioWriter;
 
     /** @var HierarchyJsonDumper $dumper */
@@ -96,8 +95,7 @@ final class BuildCommand extends Command
         }
 
         // Create the Input/Output writer
-        $this->ioWriter = new SerendipityHQStyle($input, $output);
-        $this->ioWriter->setFormatter(new SerendipityHQOutputFormatter(true));
+        $this->ioWriter = new SymfonyStyle($input, $output);
 
         $this->ioWriter->title('GeoBuilder');
 

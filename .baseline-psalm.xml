@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.16@d03e5ef057d6adc656c0ff7e166c50b73b4f48f3">
+<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
     <MixedArgument occurrences="12">
       <code>$data</code>
@@ -70,19 +70,9 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Reader/HierarchyJsonDumper.php">
-    <InvalidArgument occurrences="5">
-      <code>$export</code>
-      <code>$export</code>
-      <code>$export</code>
-      <code>$export</code>
-      <code>$export</code>
-    </InvalidArgument>
     <MixedArgument occurrences="1">
       <code>$place[GeoBuilder::COUNTRY_CODE]</code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>$countryCode</code>
-    </MixedArgumentTypeCoercion>
     <MixedArrayAccess occurrences="19">
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>

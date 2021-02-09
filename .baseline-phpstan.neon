@@ -171,11 +171,6 @@ parameters:
 			path: src/Reader/HierarchyJsonDumper.php
 
 		-
-			message: "#^Variable \\$admins3 in PHPDoc tag @var does not match any variable in the foreach loop\\: \\$admin3, \\$places$#"
-			count: 1
-			path: src/Reader/HierarchyJsonDumper.php
-
-		-
 			message: "#^Parameter \\#1 \\$submittedData of method Symfony\\\\Component\\\\Form\\\\FormInterface\\:\\:submit\\(\\) expects array\\|string\\|null, stdClass given\\.$#"
 			count: 2
 			path: tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php

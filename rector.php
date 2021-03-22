@@ -31,7 +31,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
             SetList::CODE_QUALITY,
             SetList::CODING_STYLE,
-            SetList::PERFORMANCE,
             SetList::PHP_52,
             SetList::PHP_53,
             SetList::PHP_54,
@@ -50,7 +49,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             SetList::PHPUNIT80_DMS,
             SetList::PHPUNIT_CODE_QUALITY,
             SetList::PHPUNIT_EXCEPTION,
-            SetList::PHPUNIT_INJECTOR,
             SetList::PHPUNIT_MOCK,
             SetList::PHPUNIT_SPECIFIC_METHOD,
             SetList::PHPUNIT_YIELD_DATA_PROVIDER,
@@ -70,7 +68,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             SetList::SYMFONY_50,
             SetList::SYMFONY_50_TYPES,
             SetList::SYMFONY_CODE_QUALITY,
-            SetList::SYMFONY_PHPUNIT,
             SetList::SAFE_07,
             SetList::TYPE_DECLARATION,
         ]
@@ -81,6 +78,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
     $parameters->set(
         Option::SKIP,
         [
+            __DIR__ . '/tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php',
             Rector\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRector::class,
             Rector\CodeQuality\Rector\Concat\JoinStringConcatRector::class,
             Rector\CodeQuality\Rector\Identical\SimplifyBoolIdenticalTrueRector::class,
@@ -89,7 +87,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             Rector\CodingStyle\Rector\ClassMethod\RemoveDoubleUnderscoreInMethodNameRector::class,
             Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector::class,
             Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector::class,
-            Rector\CodingStyle\Rector\Throw_\AnnotateThrowablesRector::class,
             Rector\CodingStyle\Rector\Use_\RemoveUnusedAliasRector::class,
             Rector\Php56\Rector\FunctionLike\AddDefaultValueForUndefinedVariableRector::class, // Maybe good one day
             Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector::class,

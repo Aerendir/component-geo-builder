@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.6.4@97fe86c4e158b5a57c5150aa5055c38b5a809aab">
+<files psalm-version="v4.14.0@14dcbc908ab2625cd7a74258ee6c740cbecc6140">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <MixedArgument occurrences="8">
-      <code>$data</code>
-      <code>$data</code>
-      <code>$options[self::COUNTRY_FIELD]</code>
-      <code>$options[self::COUNTRY_FIELD]</code>
-      <code>$options[self::COUNTRY_FIELD]</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
-    </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$data</code>
       <code>$data</code>
@@ -28,11 +18,6 @@
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <MixedArgument occurrences="3">
-      <code>$requestedCountries</code>
-      <code>$requestedCountry</code>
-      <code>$requestedCountry</code>
-    </MixedArgument>
     <MixedAssignment occurrences="3">
       <code>$requestedCountries</code>
       <code>$requestedCountry</code>
@@ -53,18 +38,11 @@
       <code>$code</code>
       <code>$message</code>
     </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$code</code>
-      <code>$message</code>
-    </MixedArgument>
   </file>
   <file src="src/Helper/FileWriter.php">
-    <PossiblyFalseArgument occurrences="1">
-      <code>$parts</code>
-    </PossiblyFalseArgument>
-    <PossiblyFalseIterator occurrences="1">
-      <code>$parts</code>
-    </PossiblyFalseIterator>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>self::removeEmpties($fileNameParts)</code>
+    </MixedArgumentTypeCoercion>
   </file>
   <file src="src/Parser.php">
     <MixedInferredReturnType occurrences="1">
@@ -75,9 +53,6 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Reader/HierarchyJsonDumper.php">
-    <MixedArgument occurrences="1">
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-    </MixedArgument>
     <MixedArrayAccess occurrences="19">
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
@@ -114,6 +89,15 @@
     <MixedAssignment occurrences="1">
       <code>$place</code>
     </MixedAssignment>
+    <UnnecessaryVarAnnotation occurrences="7">
+      <code>array&lt;string,string&gt;</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+    </UnnecessaryVarAnnotation>
   </file>
   <file src="src/Reader/HierarchyJsonReader.php">
     <MixedInferredReturnType occurrences="1">

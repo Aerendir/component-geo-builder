@@ -30,6 +30,7 @@ final class BuildExceptionTest extends TestCase
     public function testNoSourceFileFound(): void
     {
         $this->expectException(BuildException::class);
+
         throw BuildException::noSourceFileFound(self::REQUESTED_COUNTRY);
     }
 }

@@ -6,6 +6,9 @@ includes:
 
 parameters:
     level: max
+    reportUnmatchedIgnoredErrors: false
+    # To check and remove
+    checkMissingIterableValueType: false
     bootstrapFiles:
         - vendor-bin/phpunit/vendor/autoload.php
     paths:

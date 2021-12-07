@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.6.4@97fe86c4e158b5a57c5150aa5055c38b5a809aab">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <MixedArgument occurrences="12">
-      <code>$data</code>
-      <code>$data</code>
-      <code>$data</code>
-      <code>$data</code>
+    <MixedArgument occurrences="8">
       <code>$data</code>
       <code>$data</code>
       <code>$options[self::COUNTRY_FIELD]</code>
@@ -22,23 +18,29 @@
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$options</code>
     </MoreSpecificImplementedParamType>
+    <ReservedWord occurrences="6">
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
+    </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="3">
+      <code>$requestedCountries</code>
       <code>$requestedCountry</code>
       <code>$requestedCountry</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="3">
+      <code>$requestedCountries</code>
       <code>$requestedCountry</code>
       <code>$requestedCountry</code>
     </MixedAssignment>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <PossiblyInvalidArgument occurrences="2">
-      <code>$requestedCountries</code>
-      <code>$requestedCountries</code>
-    </PossiblyInvalidArgument>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$ioWriter</code>
     </PropertyNotSetInConstructor>

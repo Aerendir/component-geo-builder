@@ -24,6 +24,9 @@
 
     <issueHandlers>
         <MissingThrowsDocblock errorLevel="suppress" />
+        <!-- to check and remove -->
+        <MixedArgument errorLevel="suppress" />
+        <PossiblyInvalidArgument errorLevel="suppress" />
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>

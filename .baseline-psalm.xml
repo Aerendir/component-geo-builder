@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+<files psalm-version="4.17.0@6f4707aa41c9174353a6434bba3fc8840f981d9c">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <MixedArgument occurrences="12">
-      <code>$data</code>
-      <code>$data</code>
-      <code>$data</code>
-      <code>$data</code>
-      <code>$data</code>
-      <code>$data</code>
-      <code>$options[self::COUNTRY_FIELD]</code>
-      <code>$options[self::COUNTRY_FIELD]</code>
-      <code>$options[self::COUNTRY_FIELD]</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
-    </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$data</code>
       <code>$data</code>
@@ -22,20 +8,26 @@
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$options</code>
     </MoreSpecificImplementedParamType>
+    <ReservedWord occurrences="8">
+      <code>$event-&gt;getData()</code>
+      <code>$event-&gt;getData()</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
+      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
+    </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <MixedArgument occurrences="2">
-      <code>$requestedCountry</code>
-      <code>$requestedCountry</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="3">
+      <code>$requestedCountries</code>
       <code>$requestedCountry</code>
       <code>$requestedCountry</code>
     </MixedAssignment>
-    <PossiblyInvalidArgument occurrences="2">
-      <code>$requestedCountries</code>
-      <code>$requestedCountries</code>
-    </PossiblyInvalidArgument>
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$ioWriter</code>
     </PropertyNotSetInConstructor>
@@ -48,18 +40,11 @@
       <code>$code</code>
       <code>$message</code>
     </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$code</code>
-      <code>$message</code>
-    </MixedArgument>
   </file>
   <file src="src/Helper/FileWriter.php">
-    <PossiblyFalseArgument occurrences="1">
-      <code>$parts</code>
-    </PossiblyFalseArgument>
-    <PossiblyFalseIterator occurrences="1">
-      <code>$parts</code>
-    </PossiblyFalseIterator>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>self::removeEmpties($fileNameParts)</code>
+    </MixedArgumentTypeCoercion>
   </file>
   <file src="src/Parser.php">
     <MixedInferredReturnType occurrences="1">
@@ -68,11 +53,11 @@
     <MixedReturnStatement occurrences="1">
       <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
     </MixedReturnStatement>
+    <ReservedWord occurrences="1">
+      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
+    </ReservedWord>
   </file>
   <file src="src/Reader/HierarchyJsonDumper.php">
-    <MixedArgument occurrences="1">
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-    </MixedArgument>
     <MixedArrayAccess occurrences="19">
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
@@ -109,6 +94,15 @@
     <MixedAssignment occurrences="1">
       <code>$place</code>
     </MixedAssignment>
+    <UnnecessaryVarAnnotation occurrences="7">
+      <code>array&lt;string,string&gt;</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+    </UnnecessaryVarAnnotation>
   </file>
   <file src="src/Reader/HierarchyJsonReader.php">
     <MixedInferredReturnType occurrences="1">

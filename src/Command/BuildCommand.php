@@ -259,6 +259,7 @@ final class BuildCommand extends Command
         $zip = new \ZipArchive();
         $res = $zip->open($downloadedCountry);
 
+        // @phpstan-ignore-next-line
         if (false === $res) {
             throw new \RuntimeException('Impossile to unzip the source file of the country.');
         }

@@ -8,7 +8,9 @@
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$options</code>
     </MoreSpecificImplementedParamType>
-    <ReservedWord occurrences="6">
+    <ReservedWord occurrences="8">
+      <code>$event-&gt;getData()</code>
+      <code>$event-&gt;getData()</code>
       <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
       <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
       <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
@@ -51,6 +53,9 @@
     <MixedReturnStatement occurrences="1">
       <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
     </MixedReturnStatement>
+    <ReservedWord occurrences="1">
+      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
+    </ReservedWord>
   </file>
   <file src="src/Reader/HierarchyJsonDumper.php">
     <MixedArrayAccess occurrences="19">

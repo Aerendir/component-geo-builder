@@ -16,6 +16,8 @@ namespace SerendipityHQ\Component\GeoBuilder\Helper;
 use Safe\Exceptions\FilesystemException;
 use Safe\Exceptions\StringsException;
 use function Safe\file_put_contents;
+use function Safe\mkdir;
+use function Safe\sprintf;
 
 /**
  * Helper class to deal with file writing.
@@ -46,12 +48,12 @@ final class FileWriter
         $dir   = '';
 
         foreach ($parts as $part) {
-            if ( ! \is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! \Safe\mkdir($dir) && ! \is_dir($dir)) {
-                throw new \RuntimeException(\Safe\sprintf('Directory "%s" was not created', $dir));
+            if ( ! \is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! mkdir($dir) && ! \is_dir($dir)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
             }
         }
 
-        file_put_contents(\Safe\sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
+        file_put_contents(sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
     }
 
     /**

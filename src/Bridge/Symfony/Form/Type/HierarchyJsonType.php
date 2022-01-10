@@ -12,6 +12,8 @@
 namespace SerendipityHQ\Component\GeoBuilder\Bridge\Symfony\Form\Type;
 
 use App\Entity\User;
+use function Safe\array_flip;
+use function Safe\asort;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonReader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -149,8 +151,8 @@ final class HierarchyJsonType extends AbstractType
      */
     private function prepareChoices(array $values): array
     {
-        \Safe\asort($values, SORT_NATURAL);
+        asort($values, SORT_NATURAL);
 
-        return \Safe\array_flip($values);
+        return array_flip($values);
     }
 }

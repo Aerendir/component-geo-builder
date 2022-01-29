@@ -28,8 +28,6 @@ final class Parser
      * @param string $filePath the txt file from Geonames
      *
      * @throws FilesystemException
-     *
-     * @return array
      */
     public static function parse(string $filePath): array
     {

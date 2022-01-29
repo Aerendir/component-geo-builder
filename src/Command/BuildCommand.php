@@ -65,10 +65,6 @@ final class BuildCommand extends Command
     /** @var array $availableCountries The list of countries available on GeoNames */
     private $availableCountries = [];
 
-    /**
-     * @param Client $client
-     * @param string $dumpDir
-     */
     public function __construct(Client $client, string $dumpDir)
     {
         $this->client  = $client;
@@ -79,14 +75,9 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
      * @throws BuildException
      * @throws FilesystemException
      * @throws StringsException
-     *
-     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -122,9 +113,6 @@ final class BuildCommand extends Command
             ->addArgument('countries', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Indicate for which countries you want to build information.');
     }
 
-    /**
-     * @return void
-     */
     private function scrapeListOfCountries(): void
     {
         $this->ioWriter->writeln('Downloading the list of countries available on GeoNames');
@@ -146,11 +134,7 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param array $requestedCountries
-     *
      * @throws StringsException
-     *
-     * @return bool
      */
     private function checkRequestedCountriesAreAvailable(array $requestedCountries): bool
     {
@@ -166,9 +150,6 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param OutputInterface $output
-     * @param array           $requestedCountries
-     *
      * @throws BuildException
      * @throws FilesystemException
      * @throws StringsException
@@ -187,9 +168,6 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param ConsoleSectionOutput $output
-     * @param string               $requestedCountry
-     *
      * @throws BuildException
      * @throws FilesystemException
      * @throws StringsException
@@ -210,16 +188,13 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param ConsoleSectionOutput $output
-     * @param string               $requestedCountry
+     * @param string $requestedCountry
      *
      * @throws FilesystemException
      * @throws StringsException
      *
      * Thanks to
      * - https://gist.github.com/devNoiseConsulting/fb6195fbd09bfb2c1f81367dd9e727ed
-     *
-     * @return string
      */
     private function downloadRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry): string
     {
@@ -247,12 +222,8 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param string $downloadedCountry
-     *
      * @throws StringsException
      * @throws FilesystemException
-     *
-     * @return string
      */
     private function unzipDownloadedCountry(string $downloadedCountry): string
     {
@@ -284,14 +255,9 @@ final class BuildCommand extends Command
     }
 
     /**
-     * @param string $requestedCountry
-     * @param string $unzippedCountry
-     *
      * @throws StringsException
      * @throws FilesystemException
      * @throws BuildException
-     *
-     * @return array
      */
     private function decodeUnzippedCountry(string $requestedCountry, string $unzippedCountry): array
     {

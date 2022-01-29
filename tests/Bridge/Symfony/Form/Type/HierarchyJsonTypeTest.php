@@ -96,9 +96,6 @@ final class HierarchyJsonTypeTest extends TypeTestCase
         self::assertArrayHasKey(HierarchyJsonType::ADMIN3_FIELD, $children);
     }
 
-    /**
-     * @return array
-     */
     protected function getExtensions(): array
     {
         $parsedFixtures      = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'fixtures' . DIRECTORY_SEPARATOR . 'parsed';

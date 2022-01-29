@@ -27,7 +27,6 @@ final class FileWriter
     /**
      * Writes a file ensuring the entire path exists.
      *
-     * @param string       $dir
      * @param mixed|string $contents
      *
      * @throws FilesystemException
@@ -56,22 +55,11 @@ final class FileWriter
         file_put_contents(sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
     }
 
-    /**
-     * @param array  $fileNameParts
-     * @param string $ext
-     *
-     * @return string
-     */
     public static function buildFileName(array $fileNameParts, string $ext): string
     {
         return \strtoupper(\implode('_', self::removeEmpties($fileNameParts))) . $ext;
     }
 
-    /**
-     * @param array $fileName
-     *
-     * @return array
-     */
     private static function removeEmpties(array $fileName): array
     {
         return \array_filter($fileName, static function ($value): bool { return ! empty($value); });

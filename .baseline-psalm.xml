@@ -58,6 +58,9 @@
     </ReservedWord>
   </file>
   <file src="src/Reader/HierarchyJsonDumper.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$countryCode</code>
+    </MixedArgumentTypeCoercion>
     <MixedArrayAccess occurrences="19">
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
       <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
@@ -91,18 +94,25 @@
       <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]]</code>
       <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]]</code>
     </MixedArrayOffset>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment occurrences="17">
+      <code>$admin1</code>
+      <code>$admin1</code>
+      <code>$admin1</code>
+      <code>$admin2</code>
+      <code>$admin2</code>
+      <code>$admin3</code>
+      <code>$admins1</code>
+      <code>$admins1</code>
+      <code>$admins1</code>
+      <code>$admins1</code>
+      <code>$admins2</code>
+      <code>$admins2</code>
+      <code>$admins2</code>
+      <code>$admins3</code>
+      <code>$admins3</code>
       <code>$place</code>
+      <code>$places</code>
     </MixedAssignment>
-    <UnnecessaryVarAnnotation occurrences="7">
-      <code>array&lt;string,string&gt;</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-    </UnnecessaryVarAnnotation>
   </file>
   <file src="src/Reader/HierarchyJsonReader.php">
     <MixedInferredReturnType occurrences="1">

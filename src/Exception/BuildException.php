@@ -35,11 +35,7 @@ final class BuildException extends \Exception
     }
 
     /**
-     * @param string $requestedCountry
-     *
      * @throws StringsException
-     *
-     * @return static
      */
     public static function noSourceFileFound(string $requestedCountry): self
     {

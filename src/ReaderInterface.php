@@ -24,12 +24,6 @@ interface ReaderInterface
     public function __construct(string $dataFolderPath);
 
     /**
-     * @param string|null $country
-     * @param string|null $admin1
-     * @param string|null $admin2
-     * @param string|null $admin3
-     * @param string|null $place
-     *
      * @return array<int|string,string>
      */
     public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array;

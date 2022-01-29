@@ -18,10 +18,6 @@ namespace SerendipityHQ\Component\GeoBuilder;
  */
 interface DumperInterface
 {
-    /**
-     * @param string $dumpPath
-     * @param array  $parsedGeonamesDump
-     */
     public function dump(string $dumpPath, array $parsedGeonamesDump): void;
 
     /**

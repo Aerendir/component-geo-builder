@@ -57,9 +57,6 @@ final class HierarchyJsonType extends AbstractType
     /** @var PropertyAccessor $propertyAccessor */
     private $propertyAccessor;
 
-    /**
-     * @param HierarchyJsonReader $reader
-     */
     public function __construct(HierarchyJsonReader $reader)
     {
         $this->reader           = $reader;
@@ -67,9 +64,7 @@ final class HierarchyJsonType extends AbstractType
     }
 
     /**
-     * @param FormBuilderInterface $builder
-     * @param array<string,mixed>  $options
-     *
+     * @param array<string,mixed> $options
      * @suppress PhanUnusedPublicMethodParameter
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -82,10 +77,6 @@ final class HierarchyJsonType extends AbstractType
         $this->addAdmin3Field($builder, $options);
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     */
     public function addAdmin2Field(FormBuilderInterface $builder, array $options): void
     {
         $type          = $this;
@@ -107,10 +98,6 @@ final class HierarchyJsonType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SUBMIT, $addAccessForm);
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     */
     public function addAdmin3Field(FormBuilderInterface $builder, array $options): void
     {
         $type          = $this;
@@ -132,9 +119,6 @@ final class HierarchyJsonType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SUBMIT, $addAccessForm);
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -144,11 +128,6 @@ final class HierarchyJsonType extends AbstractType
         $resolver->setAllowedTypes(self::COUNTRY_FIELD, ['string']);
     }
 
-    /**
-     * @param array $values
-     *
-     * @return array
-     */
     private function prepareChoices(array $values): array
     {
         asort($values, SORT_NATURAL);

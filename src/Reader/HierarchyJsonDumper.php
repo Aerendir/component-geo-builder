@@ -78,9 +78,6 @@ final class HierarchyJsonDumper implements DumperInterface
         $this->places    = [];
     }
 
-    /**
-     * @param array $parsedGeonamesDump
-     */
     private function rearrangeData(array $parsedGeonamesDump): void
     {
         foreach ($parsedGeonamesDump as $place) {
@@ -92,9 +89,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @param string $countryCode
-     */
     private function addCountry(string $countryCode): void
     {
         if (false === \in_array($countryCode, $this->countries, true)) {
@@ -103,8 +97,6 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * @param string $dumpPath
-     *
      * @throws FilesystemException
      * @throws StringsException
      */
@@ -118,8 +110,6 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * @param string $dumpPath
-     *
      * @throws FilesystemException
      * @throws StringsException
      */
@@ -130,17 +120,11 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * @param string $dumpPath
-     *
      * @throws FilesystemException
      * @throws StringsException
      */
     private function dumpAdmins1(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->admins1 as $countryCode => $admins1) {
             $filename = \strtoupper($countryCode) . '.json';
             $export   = $this->encoder->encode($admins1, JsonEncoder::FORMAT);
@@ -149,22 +133,12 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * @param string $dumpPath
-     *
      * @throws FilesystemException
      * @throws StringsException
      */
     private function dumpAdmins2(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->admins2 as $countryCode => $admins1) {
-            /**
-             * @var string               CM (Campania), ecc
-             * @var array<string,string> $admins2
-             */
             foreach ($admins1 as $admin1 => $admins2) {
                 $filename = FileWriter::buildFileName([
                     $countryCode,
@@ -177,27 +151,13 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * @param string $dumpPath
-     *
      * @throws FilesystemException
      * @throws StringsException
      */
     private function dumpAdmins3(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->admins3 as $countryCode => $admins1) {
-            /**
-             * @var string               CM (Campania), ecc
-             * @var array<string,string> $admins2
-             */
             foreach ($admins1 as $admin1 => $admins2) {
-                /**
-                 * @var string               CM (Campania), ecc
-                 * @var array<string,string> $admins3
-                 */
                 foreach ($admins2 as $admin2 => $admins3) {
                     $filename = FileWriter::buildFileName([
                             $countryCode,
@@ -212,32 +172,14 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * @param string $dumpPath
-     *
      * @throws FilesystemException
      * @throws StringsException
      */
     private function dumpPlaces(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->places as $countryCode => $admins1) {
-            /**
-             * @var string               CM (Campania), ecc
-             * @var array<string,string> $admins2
-             */
             foreach ($admins1 as $admin1 => $admins2) {
-                /**
-                 * @var string               CM (Campania), ecc
-                 * @var array<string,string> $admins3
-                 */
                 foreach ($admins2 as $admin2 => $admins3) {
-                    /**
-                     * @var string               CM (Campania), ecc
-                     * @var array<string,string> $admins3
-                     */
                     foreach ($admins3 as $admin3 => $places) {
                         $filename = FileWriter::buildFileName([
                                 $countryCode,

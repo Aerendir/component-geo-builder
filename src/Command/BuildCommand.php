@@ -123,7 +123,7 @@ final class BuildCommand extends Command
         $this->availableCountries = (new Crawler($content))
             ->filterXPath('//html/body/pre[1]/a')
             ->reduce(static function (Crawler $node): bool {
-                $value = $node->text();
+                $value  = $node->text();
                 $length = \strlen(self::EXT);
 
                 return self::EXT === substr($value, -$length);

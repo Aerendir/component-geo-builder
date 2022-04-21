@@ -23,8 +23,7 @@ use SerendipityHQ\Component\GeoBuilder\ReaderInterface;
  */
 final class HierarchyJsonReader implements ReaderInterface
 {
-    /** @var string $dataFolderPath */
-    private $dataFolderPath;
+    private string $dataFolderPath;
 
     /**
      * {@inheritdoc}

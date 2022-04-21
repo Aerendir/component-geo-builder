@@ -51,11 +51,9 @@ final class HierarchyJsonType extends AbstractType
     /** @var string */
     private const REQUIRED = 'required';
 
-    /** @var HierarchyJsonReader $reader */
-    private $reader;
+    private HierarchyJsonReader $reader;
 
-    /** @var PropertyAccessor $propertyAccessor */
-    private $propertyAccessor;
+    private PropertyAccessor $propertyAccessor;
 
     public function __construct(HierarchyJsonReader $reader)
     {

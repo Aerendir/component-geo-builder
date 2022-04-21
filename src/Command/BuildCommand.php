@@ -50,20 +50,16 @@ final class BuildCommand extends Command
     /** @var string $defaultName */
     protected static $defaultName = 'geobuilder:build';
 
-    /** @var Client $client */
-    private $client;
+    private Client $client;
 
-    /** @var string */
-    private $dumpDir;
+    private string $dumpDir;
 
-    /** @var SymfonyStyle $ioWriter */
-    private $ioWriter;
+    private SymfonyStyle $ioWriter;
 
-    /** @var HierarchyJsonDumper $dumper */
-    private $dumper;
+    private HierarchyJsonDumper $dumper;
 
     /** @var array $availableCountries The list of countries available on GeoNames */
-    private $availableCountries = [];
+    private array $availableCountries = [];
 
     public function __construct(Client $client, string $dumpDir)
     {

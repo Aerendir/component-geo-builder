@@ -26,23 +26,18 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
  */
 final class HierarchyJsonDumper implements DumperInterface
 {
-    /** @var JsonEncode $encoder */
-    private $encoder;
+    private JsonEncode $encoder;
 
-    /** @var array $countries */
-    private $countries = [];
+    /** @var string[] $countries */
+    private array $countries = [];
 
-    /** @var array $admins1 */
-    private $admins1 = [];
+    private array $admins1 = [];
 
-    /** @var array $admins2 */
-    private $admins2 = [];
+    private array $admins2 = [];
 
-    /** @var array $admins3 */
-    private $admins3 = [];
+    private array $admins3 = [];
 
-    /** @var array $places */
-    private $places = [];
+    private array $places = [];
 
     /**
      * Initializes the encoder.

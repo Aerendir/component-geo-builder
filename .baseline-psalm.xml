@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.19.0@a2ad69ae4f5ab1f7d225a8dc4e2ec2d9415ed599">
+<files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <MixedAssignment occurrences="2">
-      <code>$data</code>
-      <code>$data</code>
-    </MixedAssignment>
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$options</code>
     </MoreSpecificImplementedParamType>
@@ -20,11 +16,6 @@
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <MixedAssignment occurrences="3">
-      <code>$requestedCountries</code>
-      <code>$requestedCountry</code>
-      <code>$requestedCountry</code>
-    </MixedAssignment>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
@@ -41,86 +32,10 @@
       <code>$message</code>
     </MissingParamType>
   </file>
-  <file src="src/Helper/FileWriter.php">
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>self::removeEmpties($fileNameParts)</code>
-    </MixedArgumentTypeCoercion>
-  </file>
   <file src="src/Parser.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
-    </MixedReturnStatement>
     <ReservedWord occurrences="1">
       <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
     </ReservedWord>
-  </file>
-  <file src="src/Reader/HierarchyJsonDumper.php">
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>$countryCode</code>
-    </MixedArgumentTypeCoercion>
-    <MixedArrayAccess occurrences="19">
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_NAME]</code>
-      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_2_NAME]</code>
-      <code>$place[GeoBuilder::ADMIN_3_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_3_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_3_NAME]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::PLACE_NAME]</code>
-      <code>$place[GeoBuilder::POSTAL_CODE]</code>
-    </MixedArrayAccess>
-    <MixedArrayAssignment occurrences="4">
-      <code>$this-&gt;admins1[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-      <code>$this-&gt;admins2[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-      <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-      <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-    </MixedArrayAssignment>
-    <MixedArrayOffset occurrences="4">
-      <code>$this-&gt;admins1[$place[GeoBuilder::COUNTRY_CODE]]</code>
-      <code>$this-&gt;admins2[$place[GeoBuilder::COUNTRY_CODE]]</code>
-      <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]]</code>
-      <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]]</code>
-    </MixedArrayOffset>
-    <MixedAssignment occurrences="17">
-      <code>$admin1</code>
-      <code>$admin1</code>
-      <code>$admin1</code>
-      <code>$admin2</code>
-      <code>$admin2</code>
-      <code>$admin3</code>
-      <code>$admins1</code>
-      <code>$admins1</code>
-      <code>$admins1</code>
-      <code>$admins1</code>
-      <code>$admins2</code>
-      <code>$admins2</code>
-      <code>$admins2</code>
-      <code>$admins3</code>
-      <code>$admins3</code>
-      <code>$place</code>
-      <code>$places</code>
-    </MixedAssignment>
-  </file>
-  <file src="src/Reader/HierarchyJsonReader.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>json_decode($content, true, 512, JSON_THROW_ON_ERROR)</code>
-    </MixedReturnStatement>
   </file>
   <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
     <InvalidArgument occurrences="2">

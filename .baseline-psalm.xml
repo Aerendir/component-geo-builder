@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
+<files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$options</code>
@@ -22,6 +22,10 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$ioWriter</code>
     </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="2">
+      <code>ProgressBar</code>
+      <code>ProgressBar</code>
+    </UndefinedClass>
     <UndefinedInterfaceMethod occurrences="1">
       <code>section</code>
     </UndefinedInterfaceMethod>
@@ -42,5 +46,21 @@
       <code>$values</code>
       <code>$values</code>
     </InvalidArgument>
+  </file>
+  <file src="vendor/symfony/console/Helper/ProgressBar.php">
+    <ParseError occurrences="12">
+      <code>,</code>
+      <code>,</code>
+      <code>,</code>
+      <code>,</code>
+      <code>:</code>
+      <code>:</code>
+      <code>=&gt;</code>
+      <code>=&gt;</code>
+      <code>=&gt;</code>
+      <code>private</code>
+      <code>private</code>
+      <code>}</code>
+    </ParseError>
   </file>
 </files>

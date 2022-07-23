@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Geo Builder Component.
  *
@@ -12,11 +14,12 @@
 namespace SerendipityHQ\Component\GeoBuilder\Tests\Reader;
 
 use PHPUnit\Framework\TestCase;
-use function Safe\file_get_contents;
 use SerendipityHQ\Component\GeoBuilder\Parser;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonReader;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
+use function Safe\file_get_contents;
 
 /**
  * Tests Parser.
@@ -24,9 +27,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 final class HierarchyJsonTest extends TestCase
 {
     // This is the first result of the parsed file
-    /**
-     * @var string[][]
-     */
+    /** @var string[][] */
     private const TEST = [[
         0 => 'IT',
         1 => '67010',

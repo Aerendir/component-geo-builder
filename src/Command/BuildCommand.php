@@ -15,13 +15,6 @@ namespace SerendipityHQ\Component\GeoBuilder\Command;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use Safe\Exceptions\FilesystemException;
-use Safe\Exceptions\StringsException;
-use function Safe\mkdir;
-use function Safe\sprintf;
-use function Safe\substr;
-use function Safe\tempnam;
-use function Safe\unlink;
 use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
 use SerendipityHQ\Component\GeoBuilder\Parser;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
@@ -35,6 +28,12 @@ use Symfony\Component\Console\Output\ConsoleSectionOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DomCrawler\Crawler;
+
+use function Safe\mkdir;
+use function Safe\sprintf;
+use function Safe\substr;
+use function Safe\tempnam;
+use function Safe\unlink;
 
 /**
  * Builds the geo lists.
@@ -51,11 +50,8 @@ final class BuildCommand extends Command
     protected static $defaultName = 'geobuilder:build';
 
     private Client $client;
-
     private string $dumpDir;
-
     private SymfonyStyle $ioWriter;
-
     private HierarchyJsonDumper $dumper;
 
     /** @var array $availableCountries The list of countries available on GeoNames */
@@ -70,11 +66,6 @@ final class BuildCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * @throws BuildException
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if ( ! $output instanceof ConsoleOutput) {
@@ -98,9 +89,6 @@ final class BuildCommand extends Command
         return 0;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -129,9 +117,6 @@ final class BuildCommand extends Command
             });
     }
 
-    /**
-     * @throws StringsException
-     */
     private function checkRequestedCountriesAreAvailable(array $requestedCountries): bool
     {
         foreach ($requestedCountries as $requestedCountry) {
@@ -145,11 +130,6 @@ final class BuildCommand extends Command
         return true;
     }
 
-    /**
-     * @throws BuildException
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function processRequestedCountries(OutputInterface $output, array $requestedCountries): void
     {
         $this->ioWriter->writeln('Starting to process requested countries');
@@ -163,11 +143,6 @@ final class BuildCommand extends Command
         }
     }
 
-    /**
-     * @throws BuildException
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function processRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry): void
     {
         $this->ioWriter->writeln(sprintf('Starting to process requested country %s', $requestedCountry));
@@ -183,15 +158,6 @@ final class BuildCommand extends Command
         $this->dumper->dump($this->dumpDir, $decodedCountry);
     }
 
-    /**
-     * @param string $requestedCountry
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     *
-     * Thanks to
-     * - https://gist.github.com/devNoiseConsulting/fb6195fbd09bfb2c1f81367dd9e727ed
-     */
     private function downloadRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry): string
     {
         $tmpFileName = tempnam(\sys_get_temp_dir(), 'geobuilder');
@@ -217,10 +183,6 @@ final class BuildCommand extends Command
         return $tmpFileName;
     }
 
-    /**
-     * @throws StringsException
-     * @throws FilesystemException
-     */
     private function unzipDownloadedCountry(string $downloadedCountry): string
     {
         $zip = new \ZipArchive();
@@ -250,11 +212,6 @@ final class BuildCommand extends Command
         return $tmpFolder;
     }
 
-    /**
-     * @throws StringsException
-     * @throws FilesystemException
-     * @throws BuildException
-     */
     private function decodeUnzippedCountry(string $requestedCountry, string $unzippedCountry): array
     {
         $fileName = null;

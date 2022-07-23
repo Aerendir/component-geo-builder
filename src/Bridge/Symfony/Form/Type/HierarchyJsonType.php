@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Geo Builder Component.
  *
@@ -12,8 +14,6 @@
 namespace SerendipityHQ\Component\GeoBuilder\Bridge\Symfony\Form\Type;
 
 use App\Entity\User;
-use function Safe\array_flip;
-use function Safe\asort;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonReader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -22,6 +22,9 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
+
+use function Safe\array_flip;
+use function Safe\asort;
 
 /**
  * Form type to manage User's permissions.
@@ -52,7 +55,6 @@ final class HierarchyJsonType extends AbstractType
     private const REQUIRED = 'required';
 
     private HierarchyJsonReader $reader;
-
     private PropertyAccessor $propertyAccessor;
 
     public function __construct(HierarchyJsonReader $reader)
@@ -79,7 +81,7 @@ final class HierarchyJsonType extends AbstractType
     {
         $type          = $this;
         $addAccessForm = static function (FormEvent $event) use ($options, $type): void {
-            $data = $event->getData();
+            $data      = $event->getData();
 
             if (\is_array($data)) {
                 return;
@@ -100,7 +102,7 @@ final class HierarchyJsonType extends AbstractType
     {
         $type          = $this;
         $addAccessForm = static function (FormEvent $event) use ($options, $type): void {
-            $data = $event->getData();
+            $data      = $event->getData();
 
             if (\is_array($data)) {
                 return;

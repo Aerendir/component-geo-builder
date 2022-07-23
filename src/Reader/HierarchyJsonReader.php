@@ -13,10 +13,11 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Reader;
 
-use function Safe\file_get_contents;
-use function Safe\json_decode;
 use SerendipityHQ\Component\GeoBuilder\Helper\FileWriter;
 use SerendipityHQ\Component\GeoBuilder\ReaderInterface;
+
+use function Safe\file_get_contents;
+use function Safe\json_decode;
 
 /**
  * Reader for the hierarchy json dumps.
@@ -25,17 +26,11 @@ final class HierarchyJsonReader implements ReaderInterface
 {
     private string $dataFolderPath;
 
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(string $dataFolderPath)
     {
         $this->dataFolderPath = $dataFolderPath;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array
     {
         $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');

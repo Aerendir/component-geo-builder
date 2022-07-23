@@ -14,7 +14,7 @@ return [
     // PhanRedefinedExtendedClass : 4 occurrences
     // PhanUndeclaredProperty : 4 occurrences
     // PhanUndeclaredMethod : 3 occurrences
-    // PhanUnreferencedUseNormal : 2 occurrences
+    // PhanUnreferencedUseNormal : 3 occurrences
     // PhanUndeclaredExtendedClass : 1 occurrence
     // PhanUnreferencedClosure : 1 occurrence
 
@@ -22,6 +22,7 @@ return [
     'file_suppressions' => [
         'src/Bridge/Symfony/Form/Type/HierarchyJsonType.php' => ['PhanUnreferencedUseNormal'],
         'src/Command/BuildCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanUndeclaredMethod', 'PhanUnreferencedClosure'],
+        'src/Exception/BuildException.php' => ['PhanUnreferencedUseNormal'],
         'tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php' => ['PhanUndeclaredExtendedClass', 'PhanUndeclaredMethod', 'PhanUndeclaredProperty', 'PhanUndeclaredStaticMethod'],
         'tests/Exception/BuildExceptionTest.php' => ['PhanRedefinedExtendedClass', 'PhanUndeclaredMethod'],
         'tests/ParserTest.php' => ['PhanRedefinedExtendedClass', 'PhanUndeclaredStaticMethod'],

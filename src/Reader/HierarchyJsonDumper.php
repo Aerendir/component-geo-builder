@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Reader;
 
-use Safe\Exceptions\FilesystemException;
-use Safe\Exceptions\StringsException;
 use SerendipityHQ\Component\GeoBuilder\DumperInterface;
 use SerendipityHQ\Component\GeoBuilder\GeoBuilder;
 use SerendipityHQ\Component\GeoBuilder\Helper\FileWriter;
@@ -32,12 +30,9 @@ final class HierarchyJsonDumper implements DumperInterface
     private array $countries = [];
 
     private array $admins1 = [];
-
     private array $admins2 = [];
-
     private array $admins3 = [];
-
-    private array $places = [];
+    private array $places  = [];
 
     /**
      * Initializes the encoder.
@@ -47,12 +42,6 @@ final class HierarchyJsonDumper implements DumperInterface
         $this->encoder = new JsonEncode();
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     public function dump(string $dumpPath, array $parsedGeonamesDump): void
     {
         $this->rearrangeData($parsedGeonamesDump);
@@ -60,8 +49,6 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @codeCoverageIgnore
      */
     public function reset(): void
@@ -91,10 +78,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpData(string $dumpPath): void
     {
         $this->dumpCountries($dumpPath);
@@ -104,20 +87,12 @@ final class HierarchyJsonDumper implements DumperInterface
         $this->dumpPlaces($dumpPath);
     }
 
-    /**
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpCountries(string $dumpPath): void
     {
         $export = $this->encoder->encode($this->countries, JsonEncoder::FORMAT);
         FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . 'countries.json', $export);
     }
 
-    /**
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpAdmins1(string $dumpPath): void
     {
         foreach ($this->admins1 as $countryCode => $admins1) {
@@ -127,10 +102,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpAdmins2(string $dumpPath): void
     {
         foreach ($this->admins2 as $countryCode => $admins1) {
@@ -145,10 +116,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpAdmins3(string $dumpPath): void
     {
         foreach ($this->admins3 as $countryCode => $admins1) {
@@ -166,10 +133,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpPlaces(string $dumpPath): void
     {
         foreach ($this->places as $countryCode => $admins1) {

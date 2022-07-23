@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Helper;
 
-use Safe\Exceptions\FilesystemException;
-use Safe\Exceptions\StringsException;
 use function Safe\file_put_contents;
 use function Safe\mkdir;
 use function Safe\sprintf;
@@ -28,9 +26,6 @@ final class FileWriter
      * Writes a file ensuring the entire path exists.
      *
      * @param mixed|string $contents
-     *
-     * @throws FilesystemException
-     * @throws StringsException
      */
     public static function writeFile(string $dir, $contents): void
     {

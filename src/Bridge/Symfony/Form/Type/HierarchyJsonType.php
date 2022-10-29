@@ -65,6 +65,7 @@ final class HierarchyJsonType extends AbstractType
 
     /**
      * @param array<string,mixed> $options
+     *
      * @suppress PhanUnusedPublicMethodParameter
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void

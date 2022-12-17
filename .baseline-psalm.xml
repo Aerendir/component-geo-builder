@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+<files psalm-version="5.2.0@fb685a16df3050d4c18d8a4100fe83abe6458cba">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$options</code>
     </MoreSpecificImplementedParamType>
-    <ReservedWord occurrences="8">
+    <ReservedWord occurrences="2">
       <code>$event-&gt;getData()</code>
-      <code>$event-&gt;getData()</code>
       <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
@@ -46,5 +40,10 @@
       <code>$values</code>
       <code>$values</code>
     </InvalidArgument>
+  </file>
+  <file src="tests/Exception/BuildExceptionTest.php">
+    <UndefinedClass occurrences="1">
+      <code>never</code>
+    </UndefinedClass>
   </file>
 </files>

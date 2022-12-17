@@ -24,7 +24,7 @@ final class BuildExceptionTest extends TestCase
     /** @var string */
     private const REQUESTED_COUNTRY = 'it';
 
-    public function testNoSourceFileFound(): void
+    public function testNoSourceFileFound(): never
     {
         $this->expectException(BuildException::class);
 

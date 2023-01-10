@@ -163,7 +163,7 @@ final class BuildCommand extends Command
         $tmpFileName = tempnam(\sys_get_temp_dir(), 'geobuilder');
         $progress    = new ProgressBar($output, 0, 1);
         $this->client->request('GET', sprintf('%s%s%s', self::DATA_URL, \strtoupper($requestedCountry), self::EXT), [
-            RequestOptions::SINK => $tmpFileName,
+            RequestOptions::SINK     => $tmpFileName,
             // Vote up https://stackoverflow.com/a/34923682/1399706
             RequestOptions::PROGRESS => static function (int $dlSize, int $dlDownloaded) use ($progress): void {
                 if (0 < $dlSize && 0 === $progress->getMaxSteps()) {

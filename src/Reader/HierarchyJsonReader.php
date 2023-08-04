@@ -31,7 +31,7 @@ final class HierarchyJsonReader implements ReaderInterface
         $this->dataFolderPath = $dataFolderPath;
     }
 
-    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array
+    public function read(string $country = null, string $admin1 = null, string $admin2 = null, string $admin3 = null, string $place = null): array
     {
         $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');
         $filePath = $this->dataFolderPath . DIRECTORY_SEPARATOR . $fileName;

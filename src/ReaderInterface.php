@@ -26,5 +26,5 @@ interface ReaderInterface
     /**
      * @return array<int|string,string>
      */
-    public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array;
+    public function read(string $country = null, string $admin1 = null, string $admin2 = null, string $admin3 = null, string $place = null): array;
 }

@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.2.0@fb685a16df3050d4c18d8a4100fe83abe6458cba">
+<files psalm-version="5.14.1@b9d355e0829c397b9b3b47d0c0ed042a8a70284d">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <MoreSpecificImplementedParamType occurrences="1">
+    <MoreSpecificImplementedParamType>
       <code>$options</code>
     </MoreSpecificImplementedParamType>
-    <ReservedWord occurrences="2">
-      <code>$event-&gt;getData()</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
+    <RedundantCondition>
+      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
+      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
+      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN2_FIELD)]]></code>
+    </RedundantCondition>
+    <ReservedWord>
+      <code><![CDATA[$event->getData()]]></code>
+      <code><![CDATA[$type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <PropertyNotSetInConstructor occurrences="1">
+    <PropertyNotSetInConstructor>
       <code>$ioWriter</code>
     </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="2">
+    <UndefinedClass>
       <code>ProgressBar</code>
       <code>ProgressBar</code>
     </UndefinedClass>
-    <UndefinedInterfaceMethod occurrences="1">
+    <UndefinedInterfaceMethod>
       <code>section</code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Exception/BuildException.php">
-    <MissingParamType occurrences="2">
+    <MissingParamType>
       <code>$code</code>
       <code>$message</code>
     </MissingParamType>
   </file>
   <file src="src/Parser.php">
-    <ReservedWord occurrences="1">
-      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
+    <ReservedWord>
+      <code><![CDATA[$encoder->decode($unzippedCountry, CsvEncoder::FORMAT)]]></code>
     </ReservedWord>
   </file>
   <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
-    <InvalidArgument occurrences="2">
+    <InvalidArgument>
       <code>$values</code>
       <code>$values</code>
     </InvalidArgument>
   </file>
   <file src="tests/Exception/BuildExceptionTest.php">
-    <UndefinedClass occurrences="1">
+    <UndefinedClass>
       <code>never</code>
     </UndefinedClass>
   </file>

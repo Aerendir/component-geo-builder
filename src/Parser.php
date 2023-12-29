@@ -20,7 +20,7 @@ use function Safe\file_get_contents;
 /**
  * Parses the content of a dump from GeoNames.
  *
- * @see \SerendipityHQ\Component\GeoBuilder\Tests\ParserTest
+ * @see Tests\ParserTest
  */
 final class Parser
 {

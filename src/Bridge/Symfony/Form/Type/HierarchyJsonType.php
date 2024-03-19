@@ -124,7 +124,7 @@ final class HierarchyJsonType extends AbstractType
     {
         $resolver->setDefaults([
             self::COUNTRY_FIELD => null,
-                               ]);
+        ]);
 
         $resolver->setAllowedTypes(self::COUNTRY_FIELD, ['string']);
     }

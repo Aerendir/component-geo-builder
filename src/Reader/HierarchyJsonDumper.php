@@ -122,10 +122,10 @@ final class HierarchyJsonDumper implements DumperInterface
             foreach ($admins1 as $admin1 => $admins2) {
                 foreach ($admins2 as $admin2 => $admins3) {
                     $filename = FileWriter::buildFileName([
-                            $countryCode,
-                            $admin1,
-                            $admin2,
-                        ], '.json');
+                        $countryCode,
+                        $admin1,
+                        $admin2,
+                    ], '.json');
                     $export = $this->encoder->encode($admins3, JsonEncoder::FORMAT);
                     FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                 }
@@ -140,11 +140,11 @@ final class HierarchyJsonDumper implements DumperInterface
                 foreach ($admins2 as $admin2 => $admins3) {
                     foreach ($admins3 as $admin3 => $places) {
                         $filename = FileWriter::buildFileName([
-                                $countryCode,
-                                $admin1,
-                                $admin2,
-                                $admin3,
-                            ], '.json');
+                            $countryCode,
+                            $admin1,
+                            $admin2,
+                            $admin3,
+                        ], '.json');
                         $export = $this->encoder->encode($places, JsonEncoder::FORMAT);
                         FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                     }

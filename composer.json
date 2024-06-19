@@ -18,7 +18,7 @@
         "php": "^7.4|^8.0",
         "ext-zip": "*",
         "guzzlehttp/guzzle": "^7.0",
-        "symfony/dom-crawler": "^4.4|^5.4|^6.0",
+        "symfony/dom-crawler": "^4.4|^5.4|^6.0|^7.0",
         "symfony/serializer": "^4.4|^5.4|^6.0|^7.0",
         "thecodingmachine/safe": "^1.3"
     },

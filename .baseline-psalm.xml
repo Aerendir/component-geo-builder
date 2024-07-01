@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.18.0@b113f3ed0259fd6e212d87c3df80eec95a6abf19">
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
+    <DeprecatedFunction>
+      <code><![CDATA[array_flip($values)]]></code>
+      <code><![CDATA[asort($values, SORT_NATURAL)]]></code>
+    </DeprecatedFunction>
     <MoreSpecificImplementedParamType>
-      <code>$options</code>
+      <code><![CDATA[$options]]></code>
     </MoreSpecificImplementedParamType>
     <RedundantCondition>
       <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
@@ -15,25 +19,47 @@
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('%s%s%s', self::DATA_URL, \strtoupper($requestedCountry), self::EXT)]]></code>
+      <code><![CDATA[sprintf('%s%s', \strtoupper($requestedCountry), self::EXT)]]></code>
+      <code><![CDATA[sprintf('%s.txt', \strtoupper($requestedCountry))]]></code>
+      <code><![CDATA[sprintf('%s/%s', $unzippedCountry, $fileName)]]></code>
+      <code><![CDATA[sprintf('Decoding requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('Directory "%s" was not created', $tmpFolder)]]></code>
+      <code><![CDATA[sprintf('Downloading requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('Extracting requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('Starting to process requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('The country "%s" you requested is not available on GeoNames', $requestedCountry)]]></code>
+      <code><![CDATA[substr($value, -$length)]]></code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType>
-      <code>$defaultName</code>
+      <code><![CDATA[$defaultName]]></code>
     </NonInvariantDocblockPropertyType>
     <PropertyNotSetInConstructor>
-      <code>$ioWriter</code>
+      <code><![CDATA[$ioWriter]]></code>
     </PropertyNotSetInConstructor>
     <UndefinedClass>
-      <code>ProgressBar</code>
-      <code>ProgressBar</code>
+      <code><![CDATA[ProgressBar]]></code>
+      <code><![CDATA[ProgressBar]]></code>
     </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>section</code>
+      <code><![CDATA[section]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Exception/BuildException.php">
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('Impossible to find the source file for country %s.', $requestedCountry)]]></code>
+    </DeprecatedFunction>
     <MissingParamType>
-      <code>$code</code>
-      <code>$message</code>
+      <code><![CDATA[$code]]></code>
+      <code><![CDATA[$message]]></code>
     </MissingParamType>
+  </file>
+  <file src="src/Helper/FileWriter.php">
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file)]]></code>
+      <code><![CDATA[sprintf('Directory "%s" was not created', $dir)]]></code>
+    </DeprecatedFunction>
   </file>
   <file src="src/Parser.php">
     <ReservedWord>
@@ -42,13 +68,13 @@
   </file>
   <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
     <InvalidArgument>
-      <code>$values</code>
-      <code>$values</code>
+      <code><![CDATA[$values]]></code>
+      <code><![CDATA[$values]]></code>
     </InvalidArgument>
   </file>
   <file src="tests/Exception/BuildExceptionTest.php">
     <UndefinedClass>
-      <code>never</code>
+      <code><![CDATA[never]]></code>
     </UndefinedClass>
   </file>
 </files>

@@ -35,7 +35,7 @@
         "symfony/console": "^6.4 || ^7.4 || ^8.0",
         "symfony/form": "^6.4 || ^7.4 || ^8.0",
         "symfony/var-dumper": "^6.4 || ^7.4 || ^8.0",
-        "thecodingmachine/phpstan-safe-rule": "1.2.0"
+        "thecodingmachine/phpstan-safe-rule": "^1.4.3"
     },
     "suggest": {
         "symfony/form": "To use the builtin form types."

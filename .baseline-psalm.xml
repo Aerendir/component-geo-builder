@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <DeprecatedFunction>
-      <code><![CDATA[array_flip($values)]]></code>
-      <code><![CDATA[asort($values, SORT_NATURAL)]]></code>
-    </DeprecatedFunction>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$options]]></code>
     </MoreSpecificImplementedParamType>
@@ -19,26 +15,21 @@
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <DeprecatedFunction>
-      <code><![CDATA[sprintf('%s%s%s', self::DATA_URL, \strtoupper($requestedCountry), self::EXT)]]></code>
-      <code><![CDATA[sprintf('%s%s', \strtoupper($requestedCountry), self::EXT)]]></code>
-      <code><![CDATA[sprintf('%s.txt', \strtoupper($requestedCountry))]]></code>
-      <code><![CDATA[sprintf('%s/%s', $unzippedCountry, $fileName)]]></code>
-      <code><![CDATA[sprintf('Decoding requested country %s', $requestedCountry)]]></code>
-      <code><![CDATA[sprintf('Directory "%s" was not created', $tmpFolder)]]></code>
-      <code><![CDATA[sprintf('Downloading requested country %s', $requestedCountry)]]></code>
-      <code><![CDATA[sprintf('Extracting requested country %s', $requestedCountry)]]></code>
-      <code><![CDATA[sprintf('Starting to process requested country %s', $requestedCountry)]]></code>
-      <code><![CDATA[sprintf('The country "%s" you requested is not available on GeoNames', $requestedCountry)]]></code>
-      <code><![CDATA[substr($value, -$length)]]></code>
-    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType>
       <code><![CDATA[$defaultName]]></code>
     </NonInvariantDocblockPropertyType>
+    <PossiblyNullArgument>
+      <code><![CDATA[$fileName]]></code>
+    </PossiblyNullArgument>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$ioWriter]]></code>
     </PropertyNotSetInConstructor>
     <UndefinedClass>
+      <code><![CDATA[$node]]></code>
+      <code><![CDATA[$node]]></code>
+      <code><![CDATA[Crawler]]></code>
+      <code><![CDATA[Crawler]]></code>
+      <code><![CDATA[Crawler]]></code>
       <code><![CDATA[ProgressBar]]></code>
       <code><![CDATA[ProgressBar]]></code>
     </UndefinedClass>
@@ -47,19 +38,10 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Exception/BuildException.php">
-    <DeprecatedFunction>
-      <code><![CDATA[sprintf('Impossible to find the source file for country %s.', $requestedCountry)]]></code>
-    </DeprecatedFunction>
     <MissingParamType>
       <code><![CDATA[$code]]></code>
       <code><![CDATA[$message]]></code>
     </MissingParamType>
-  </file>
-  <file src="src/Helper/FileWriter.php">
-    <DeprecatedFunction>
-      <code><![CDATA[sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file)]]></code>
-      <code><![CDATA[sprintf('Directory "%s" was not created', $dir)]]></code>
-    </DeprecatedFunction>
   </file>
   <file src="src/Parser.php">
     <ReservedWord>

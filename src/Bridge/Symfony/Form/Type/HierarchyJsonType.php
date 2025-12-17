@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Geo Builder Component.
  *
@@ -20,6 +22,9 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
+
+use function Safe\array_flip;
+use function Safe\asort;
 
 /**
  * Form type to manage User's permissions.
@@ -49,15 +54,9 @@ final class HierarchyJsonType extends AbstractType
     /** @var string */
     private const REQUIRED = 'required';
 
-    /** @var HierarchyJsonReader $reader */
-    private $reader;
+    private HierarchyJsonReader $reader;
+    private PropertyAccessor $propertyAccessor;
 
-    /** @var PropertyAccessor $propertyAccessor */
-    private $propertyAccessor;
-
-    /**
-     * @param HierarchyJsonReader $reader
-     */
     public function __construct(HierarchyJsonReader $reader)
     {
         $this->reader           = $reader;
@@ -65,8 +64,7 @@ final class HierarchyJsonType extends AbstractType
     }
 
     /**
-     * @param FormBuilderInterface $builder
-     * @param array<string,mixed>  $options
+     * @param array<string,mixed> $options
      *
      * @suppress PhanUnusedPublicMethodParameter
      */
@@ -80,15 +78,11 @@ final class HierarchyJsonType extends AbstractType
         $this->addAdmin3Field($builder, $options);
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     */
     public function addAdmin2Field(FormBuilderInterface $builder, array $options): void
     {
         $type          = $this;
         $addAccessForm = static function (FormEvent $event) use ($options, $type): void {
-            $data = $event->getData();
+            $data      = $event->getData();
 
             if (\is_array($data)) {
                 return;
@@ -105,15 +99,11 @@ final class HierarchyJsonType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SUBMIT, $addAccessForm);
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     */
     public function addAdmin3Field(FormBuilderInterface $builder, array $options): void
     {
         $type          = $this;
         $addAccessForm = static function (FormEvent $event) use ($options, $type): void {
-            $data = $event->getData();
+            $data      = $event->getData();
 
             if (\is_array($data)) {
                 return;
@@ -130,27 +120,19 @@ final class HierarchyJsonType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SUBMIT, $addAccessForm);
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             self::COUNTRY_FIELD => null,
-                               ]);
+        ]);
 
         $resolver->setAllowedTypes(self::COUNTRY_FIELD, ['string']);
     }
 
-    /**
-     * @param array $values
-     *
-     * @return array
-     */
     private function prepareChoices(array $values): array
     {
-        \Safe\asort($values, SORT_NATURAL);
+        asort($values, SORT_NATURAL);
 
-        return \Safe\array_flip($values);
+        return array_flip($values);
     }
 }

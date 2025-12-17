@@ -1,121 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.17.0@6f4707aa41c9174353a6434bba3fc8840f981d9c">
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
   <file src="src/Bridge/Symfony/Form/Type/HierarchyJsonType.php">
-    <MixedAssignment occurrences="2">
-      <code>$data</code>
-      <code>$data</code>
-    </MixedAssignment>
-    <MoreSpecificImplementedParamType occurrences="1">
-      <code>$options</code>
+    <DeprecatedFunction>
+      <code><![CDATA[array_flip($values)]]></code>
+      <code><![CDATA[asort($values, SORT_NATURAL)]]></code>
+    </DeprecatedFunction>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$options]]></code>
     </MoreSpecificImplementedParamType>
-    <ReservedWord occurrences="8">
-      <code>$event-&gt;getData()</code>
-      <code>$event-&gt;getData()</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN1_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
-      <code>$type-&gt;propertyAccessor-&gt;getValue($data, self::ADMIN2_FIELD)</code>
+    <RedundantCondition>
+      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
+      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
+      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN2_FIELD)]]></code>
+    </RedundantCondition>
+    <ReservedWord>
+      <code><![CDATA[$event->getData()]]></code>
+      <code><![CDATA[$type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
     </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
-    <MixedAssignment occurrences="3">
-      <code>$requestedCountries</code>
-      <code>$requestedCountry</code>
-      <code>$requestedCountry</code>
-    </MixedAssignment>
-    <NonInvariantDocblockPropertyType occurrences="1">
-      <code>$defaultName</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('%s%s%s', self::DATA_URL, \strtoupper($requestedCountry), self::EXT)]]></code>
+      <code><![CDATA[sprintf('%s%s', \strtoupper($requestedCountry), self::EXT)]]></code>
+      <code><![CDATA[sprintf('%s.txt', \strtoupper($requestedCountry))]]></code>
+      <code><![CDATA[sprintf('%s/%s', $unzippedCountry, $fileName)]]></code>
+      <code><![CDATA[sprintf('Decoding requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('Directory "%s" was not created', $tmpFolder)]]></code>
+      <code><![CDATA[sprintf('Downloading requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('Extracting requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('Starting to process requested country %s', $requestedCountry)]]></code>
+      <code><![CDATA[sprintf('The country "%s" you requested is not available on GeoNames', $requestedCountry)]]></code>
+      <code><![CDATA[substr($value, -$length)]]></code>
+    </DeprecatedFunction>
+    <NonInvariantDocblockPropertyType>
+      <code><![CDATA[$defaultName]]></code>
     </NonInvariantDocblockPropertyType>
-    <PropertyNotSetInConstructor occurrences="1">
-      <code>$ioWriter</code>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$ioWriter]]></code>
     </PropertyNotSetInConstructor>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>section</code>
+    <UndefinedClass>
+      <code><![CDATA[ProgressBar]]></code>
+      <code><![CDATA[ProgressBar]]></code>
+    </UndefinedClass>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[section]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Exception/BuildException.php">
-    <MissingParamType occurrences="2">
-      <code>$code</code>
-      <code>$message</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('Impossible to find the source file for country %s.', $requestedCountry)]]></code>
+    </DeprecatedFunction>
+    <MissingParamType>
+      <code><![CDATA[$code]]></code>
+      <code><![CDATA[$message]]></code>
     </MissingParamType>
   </file>
   <file src="src/Helper/FileWriter.php">
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>self::removeEmpties($fileNameParts)</code>
-    </MixedArgumentTypeCoercion>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file)]]></code>
+      <code><![CDATA[sprintf('Directory "%s" was not created', $dir)]]></code>
+    </DeprecatedFunction>
   </file>
   <file src="src/Parser.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
-    </MixedReturnStatement>
-    <ReservedWord occurrences="1">
-      <code>$encoder-&gt;decode($unzippedCountry, CsvEncoder::FORMAT)</code>
+    <ReservedWord>
+      <code><![CDATA[$encoder->decode($unzippedCountry, CsvEncoder::FORMAT)]]></code>
     </ReservedWord>
   </file>
-  <file src="src/Reader/HierarchyJsonDumper.php">
-    <MixedArrayAccess occurrences="19">
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_1_NAME]</code>
-      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_2_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_2_NAME]</code>
-      <code>$place[GeoBuilder::ADMIN_3_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_3_CODE]</code>
-      <code>$place[GeoBuilder::ADMIN_3_NAME]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::COUNTRY_CODE]</code>
-      <code>$place[GeoBuilder::PLACE_NAME]</code>
-      <code>$place[GeoBuilder::POSTAL_CODE]</code>
-    </MixedArrayAccess>
-    <MixedArrayAssignment occurrences="4">
-      <code>$this-&gt;admins1[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-      <code>$this-&gt;admins2[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-      <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-      <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]][$place[GeoBuilder::ADMIN_1_CODE]]</code>
-    </MixedArrayAssignment>
-    <MixedArrayOffset occurrences="4">
-      <code>$this-&gt;admins1[$place[GeoBuilder::COUNTRY_CODE]]</code>
-      <code>$this-&gt;admins2[$place[GeoBuilder::COUNTRY_CODE]]</code>
-      <code>$this-&gt;admins3[$place[GeoBuilder::COUNTRY_CODE]]</code>
-      <code>$this-&gt;places[$place[GeoBuilder::COUNTRY_CODE]]</code>
-    </MixedArrayOffset>
-    <MixedAssignment occurrences="1">
-      <code>$place</code>
-    </MixedAssignment>
-    <UnnecessaryVarAnnotation occurrences="7">
-      <code>array&lt;string,string&gt;</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-      <code>string</code>
-    </UnnecessaryVarAnnotation>
-  </file>
-  <file src="src/Reader/HierarchyJsonReader.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>\Safe\json_decode($content, true)</code>
-    </MixedReturnStatement>
-  </file>
   <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
-    <InvalidArgument occurrences="2">
-      <code>$values</code>
-      <code>$values</code>
+    <InvalidArgument>
+      <code><![CDATA[$values]]></code>
+      <code><![CDATA[$values]]></code>
     </InvalidArgument>
+  </file>
+  <file src="tests/Exception/BuildExceptionTest.php">
+    <UndefinedClass>
+      <code><![CDATA[never]]></code>
+    </UndefinedClass>
   </file>
 </files>

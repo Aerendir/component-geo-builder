@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Reader;
 
-use Safe\Exceptions\FilesystemException;
-use Safe\Exceptions\StringsException;
 use SerendipityHQ\Component\GeoBuilder\DumperInterface;
 use SerendipityHQ\Component\GeoBuilder\GeoBuilder;
 use SerendipityHQ\Component\GeoBuilder\Helper\FileWriter;
@@ -26,23 +24,15 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
  */
 final class HierarchyJsonDumper implements DumperInterface
 {
-    /** @var JsonEncode $encoder */
-    private $encoder;
+    private JsonEncode $encoder;
 
-    /** @var array $countries */
-    private $countries = [];
+    /** @var string[] $countries */
+    private array $countries = [];
 
-    /** @var array $admins1 */
-    private $admins1 = [];
-
-    /** @var array $admins2 */
-    private $admins2 = [];
-
-    /** @var array $admins3 */
-    private $admins3 = [];
-
-    /** @var array $places */
-    private $places = [];
+    private array $admins1 = [];
+    private array $admins2 = [];
+    private array $admins3 = [];
+    private array $places  = [];
 
     /**
      * Initializes the encoder.
@@ -52,12 +42,6 @@ final class HierarchyJsonDumper implements DumperInterface
         $this->encoder = new JsonEncode();
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     public function dump(string $dumpPath, array $parsedGeonamesDump): void
     {
         $this->rearrangeData($parsedGeonamesDump);
@@ -65,8 +49,6 @@ final class HierarchyJsonDumper implements DumperInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @codeCoverageIgnore
      */
     public function reset(): void
@@ -78,9 +60,6 @@ final class HierarchyJsonDumper implements DumperInterface
         $this->places    = [];
     }
 
-    /**
-     * @param array $parsedGeonamesDump
-     */
     private function rearrangeData(array $parsedGeonamesDump): void
     {
         foreach ($parsedGeonamesDump as $place) {
@@ -92,9 +71,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @param string $countryCode
-     */
     private function addCountry(string $countryCode): void
     {
         if (false === \in_array($countryCode, $this->countries, true)) {
@@ -102,12 +78,6 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @param string $dumpPath
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpData(string $dumpPath): void
     {
         $this->dumpCountries($dumpPath);
@@ -117,30 +87,14 @@ final class HierarchyJsonDumper implements DumperInterface
         $this->dumpPlaces($dumpPath);
     }
 
-    /**
-     * @param string $dumpPath
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpCountries(string $dumpPath): void
     {
         $export = $this->encoder->encode($this->countries, JsonEncoder::FORMAT);
         FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . 'countries.json', $export);
     }
 
-    /**
-     * @param string $dumpPath
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpAdmins1(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->admins1 as $countryCode => $admins1) {
             $filename = \strtoupper($countryCode) . '.json';
             $export   = $this->encoder->encode($admins1, JsonEncoder::FORMAT);
@@ -148,23 +102,9 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @param string $dumpPath
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpAdmins2(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->admins2 as $countryCode => $admins1) {
-            /**
-             * @var string               CM (Campania), ecc
-             * @var array<string,string> $admins2
-             */
             foreach ($admins1 as $admin1 => $admins2) {
                 $filename = FileWriter::buildFileName([
                     $countryCode,
@@ -176,34 +116,16 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @param string $dumpPath
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpAdmins3(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->admins3 as $countryCode => $admins1) {
-            /**
-             * @var string               CM (Campania), ecc
-             * @var array<string,string> $admins2
-             */
             foreach ($admins1 as $admin1 => $admins2) {
-                /**
-                 * @var string               CM (Campania), ecc
-                 * @var array<string,string> $admins3
-                 */
                 foreach ($admins2 as $admin2 => $admins3) {
                     $filename = FileWriter::buildFileName([
-                            $countryCode,
-                            $admin1,
-                            $admin2,
-                        ], '.json');
+                        $countryCode,
+                        $admin1,
+                        $admin2,
+                    ], '.json');
                     $export = $this->encoder->encode($admins3, JsonEncoder::FORMAT);
                     FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                 }
@@ -211,40 +133,18 @@ final class HierarchyJsonDumper implements DumperInterface
         }
     }
 
-    /**
-     * @param string $dumpPath
-     *
-     * @throws FilesystemException
-     * @throws StringsException
-     */
     private function dumpPlaces(string $dumpPath): void
     {
-        /**
-         * @var string               IT, DE, ecc
-         * @var array<string,string> $admins1
-         */
         foreach ($this->places as $countryCode => $admins1) {
-            /**
-             * @var string               CM (Campania), ecc
-             * @var array<string,string> $admins2
-             */
             foreach ($admins1 as $admin1 => $admins2) {
-                /**
-                 * @var string               CM (Campania), ecc
-                 * @var array<string,string> $admins3
-                 */
                 foreach ($admins2 as $admin2 => $admins3) {
-                    /**
-                     * @var string               CM (Campania), ecc
-                     * @var array<string,string> $admins3
-                     */
                     foreach ($admins3 as $admin3 => $places) {
                         $filename = FileWriter::buildFileName([
-                                $countryCode,
-                                $admin1,
-                                $admin2,
-                                $admin3,
-                            ], '.json');
+                            $countryCode,
+                            $admin1,
+                            $admin2,
+                            $admin3,
+                        ], '.json');
                         $export = $this->encoder->encode($places, JsonEncoder::FORMAT);
                         FileWriter::writeFile($dumpPath . DIRECTORY_SEPARATOR . $filename, $export);
                     }

@@ -20,10 +20,11 @@
 </p>
 <p>
     Supports <br />
-    <a title="Tested with Symfony ^4.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^4.4" src="https://img.shields.io/badge/Symfony-%5E4.4-333?style=flat-square&logo=symfony" /></a>
-    <a title="Tested with Symfony ^5.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^5.4" src="https://img.shields.io/badge/Symfony-%5E5.4-333?style=flat-square&logo=symfony" /></a>
-    <a title="Tested with Symfony ^6.0" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^6.0" src="https://img.shields.io/badge/Symfony-%5E6.0-333?style=flat-square&logo=symfony" /></a>
-
+    <a title="Supports Symfony ^4.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Supports Symfony ^4.4" src="https://img.shields.io/badge/Symfony-%5E4.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Supports Symfony ^5.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Supports Symfony ^5.4" src="https://img.shields.io/badge/Symfony-%5E5.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Supports Symfony ^6.0" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Supports Symfony ^6.0" src="https://img.shields.io/badge/Symfony-%5E6.0-333?style=flat-square&logo=symfony" /></a>
+</p>
+<p>
     Tested on <br />
     <a title="Tested with Symfony ^4.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^4.4" src="https://img.shields.io/badge/Symfony-%5E4.4-333?style=flat-square&logo=symfony" /></a>
     <a title="Tested with Symfony ^5.4" href="https://github.com/Aerendir/component-geo-builder/actions?query=branch%3Adev"><img title="Tested with Symfony ^5.4" src="https://img.shields.io/badge/Symfony-%5E5.4-333?style=flat-square&logo=symfony" /></a>

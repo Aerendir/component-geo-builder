@@ -61,11 +61,6 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^PHPDoc tag @var above foreach loop does not specify variable name\\.$#"
-			count: 10
-			path: src/Reader/HierarchyJsonDumper.php
-
-		-
 			message: "#^Method SerendipityHQ\\\\Component\\\\GeoBuilder\\\\Reader\\\\HierarchyJsonReader\\:\\:read\\(\\) should return array\\<int\\|string, string\\> but returns mixed\\.$#"
 			count: 1
 			path: src/Reader/HierarchyJsonReader.php

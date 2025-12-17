@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Geo Builder Component.
  *
@@ -12,7 +14,6 @@
 namespace SerendipityHQ\Component\GeoBuilder\Tests\Exception;
 
 use PHPUnit\Framework\TestCase;
-use Safe\Exceptions\StringsException;
 use SerendipityHQ\Component\GeoBuilder\Exception\BuildException;
 
 /**
@@ -23,11 +24,7 @@ final class BuildExceptionTest extends TestCase
     /** @var string */
     private const REQUESTED_COUNTRY = 'it';
 
-    /**
-     * @throws BuildException
-     * @throws StringsException
-     */
-    public function testNoSourceFileFound(): void
+    public function testNoSourceFileFound(): never
     {
         $this->expectException(BuildException::class);
 

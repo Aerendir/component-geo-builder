@@ -1,8 +1,8 @@
 # Supported PHP Versions
-PHP_VERSIONS := 8.2 8.3 8.4 8.5
+PHP_VERSIONS := 8.1 8.2 8.3 8.4 8.5
 
 # Versions (always use the lowest supported versions)
-PHP_V ?= 8.2
+PHP_V ?= 8.1
 SF_V ?= 6.4
 
 # Helper variable to use in `docker-compose.yaml`

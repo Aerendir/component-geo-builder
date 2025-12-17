@@ -54,14 +54,133 @@
             "SerendipityHQ\\Component\\GeoBuilder\\Tests\\": "tests"
         }
     },
-    "scripts": {
-        "bin": "echo 'bin not installed'",
-        "post-install-cmd": ["@composer bin all install --ansi"],
-        "post-update-cmd": ["@composer bin all update --ansi"]
-    },
     "extra": {
         "bamarni-bin": {
             "bin-links": false
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ],
+        "bin": "echo 'bin not installed'",
+        "bl": [
+            "@bl:phpstan",
+            "@bl:phan",
+            "@bl:psalm"
+        ],
+        "bl:phan": [
+            "vendor-bin/phan/vendor/bin/phan --dead-code-detection --save-baseline .baseline-phan.php --color --color-scheme=eclipse_dark"
+        ],
+        "bl:phpstan": [
+            "vendor/bin/phpstan analyse --generate-baseline .baseline-phpstan.neon"
+        ],
+        "bl:psalm": [
+            "vendor-bin/phpunit/vendor/bin/psalm --set-baseline=.baseline-psalm.xml"
+        ],
+        "dev:insights": [
+            "./vendor-bin/phpinsights/vendor/bin/phpinsights analyse --composer=./composer.json -v"
+        ],
+        "fix": [
+            "@fix:rector",
+            "@fix:phpcs",
+            "@fix:cn"
+        ],
+        "fix:cn": [
+            "composer bin cn normalize ./../../composer.json --no-scripts --no-update-lock"
+        ],
+        "fix:phpcs": [
+            "vendor-bin/phpcs/vendor/bin/php-cs-fixer fix --allow-risky yes -v"
+        ],
+        "fix:rector": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/rector process"
+        ],
+        "matrix:compare": [
+            "vendor-bin/ghmatrix/vendor/bin/github-actions-matrix compare -u Aerendir -b master -vvv"
+        ],
+        "matrix:sync": [
+            "vendor-bin/ghmatrix/vendor/bin/github-actions-matrix sync -u Aerendir -b master -vvv"
+        ],
+        "test": [
+            "@test:run"
+        ],
+        "test:coverage": [
+            "@test:run:coverage"
+        ],
+        "test:infection:covered": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:fast": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --git-diff-filter=AM --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:full": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --logger-html=./var/mutations"
+        ],
+        "test:infection:run:covered": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --skip-initial-tests --coverage=./var/coverage/ --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:run:fast": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --skip-initial-tests --coverage=./var/coverage/ --git-diff-filter=AM --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:run:full": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --skip-initial-tests --coverage=./var/coverage/ --logger-html=./var/mutations"
+        ],
+        "test:run": [
+            "@php vendor-bin/phpunit/vendor/bin/phpunit"
+        ],
+        "test:run:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@test:run --coverage-html ./var/coverage/coverage-html --coverage-clover ./var/coverage/clover.xml --coverage-xml ./var/coverage/coverage-xml --log-junit ./var/coverage/junit.xml"
+        ],
+        "test:run:coverage:filter": [
+            "@test:run:coverage --filter"
+        ],
+        "val": [
+            "@val:style",
+            "@val:static"
+        ],
+        "val:cn": [
+            "composer bin cn normalize ./../../composer.json --dry-run"
+        ],
+        "val:composer": [
+            "@val:cn",
+            "composer audit",
+            "composer validate --strict --check-lock"
+        ],
+        "val:phan": [
+            "vendor-bin/phan/vendor/bin/phan --dead-code-detection --color --color-scheme=eclipse_dark"
+        ],
+        "val:phpcs": [
+            "vendor-bin/phpcs/vendor/bin/php-cs-fixer fix --allow-risky yes -v --dry-run"
+        ],
+        "val:phpstan": [
+            "vendor/bin/phpstan analyse"
+        ],
+        "val:psalm": [
+            "vendor-bin/phpunit/vendor/bin/psalm"
+        ],
+        "val:rector": [
+            "vendor/bin/rector process --dry-run"
+        ],
+        "val:static": [
+            "@val:composer",
+            "@val:phpstan",
+            "@val:psalm"
+        ],
+        "val:style": [
+            "@val:rector",
+            "@val:phpcs",
+            "@val:cn"
+        ]
     }
 }

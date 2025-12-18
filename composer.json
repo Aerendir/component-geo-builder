@@ -54,6 +54,8 @@
         "bamarni-bin": {
             "bin-links": false,
             "forward-command": false
+        },
+        "symfony": {
         }
     },
     "scripts": {

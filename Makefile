@@ -104,7 +104,7 @@ start: ## Starts the containers. Ex: make start [php] [sf]
 	@echo "Debug: \033[32mOff\033[0m"
 	@echo ""
 	$(DOCKER_COMP) up -d --build
-	$(MAKE) sf
+	$(MAKE) sf PHP_V=$(PHP_V) SF_V=$(SF_V)
 
 stax: ## Starts containers WITH XDEBUG. Ex: make stax [php] [sf]
 	$(MAKE) stop
@@ -113,7 +113,7 @@ stax: ## Starts containers WITH XDEBUG. Ex: make stax [php] [sf]
 	@echo "Debug: \033[32mOn\033[0m"
 	@echo ""
 	XDEBUG_MODE=debug $(DOCKER_COMP) up -d --build
-	$(MAKE) sf
+	$(MAKE) sf PHP_V=$(PHP_V) SF_V=$(SF_V)
 
 sync: ## Syncs branches and dependencies.
 	git fetch
@@ -150,16 +150,17 @@ composer: ## Run Composer. Pass c=... (default: install)
 	$(COMPOSER_EX) $(c)
 
 sf: ## Install Symfony version. Ex: make sf 6.4
-	$(COMPOSER_EX) config extra.symfony.require "~$(SF_V)"
-	$(COMPOSER_EX) update "symfony/*" --with-all-dependencies
-
-# -----------------------------------------------------------------------------
-# Private / helpers
-# -----------------------------------------------------------------------------
-
-stop-v:
-	@$(DOCKER_COMP) stop
-
-# Avoids error: No rule to make target `8.x'
-$(PHP_VERSIONS) $(SF_VERSIONS):
-	@true
+	@set -e; \
+	ORIGINAL_SYMFONY_REQUIRE="$$( $(COMPOSER_EX) config extra.symfony.require 2>/dev/null || true )"; \
+	cleanup() { \
+		if [ -z "$$ORIGINAL_SYMFONY_REQUIRE" ]; then \
+			$(COMPOSER_EX) config --unset extra.symfony.require >/dev/null 2>&1 || true; \
+		else \
+			$(COMPOSER_EX) config extra.symfony.require "$$ORIGINAL_SYMFONY_REQUIRE" >/dev/null 2>&1 || true; \
+		fi; \
+	}; \
+	trap cleanup EXIT INT TERM; \
+	$(COMPOSER_EX) config extra.symfony.require "~$(SF_V)"; \
+	if ! $(COMPOSER_EX) update "symfony/*" --with-all-dependencies; then \
+		echo "[33m⚠️  Some tools are incompatible with PHP $(PHP_V) / Symfony $(SF_V). Environment started anyway.[0m"; \
+	fi

@@ -10,22 +10,20 @@
 return [
     // # Issue statistics:
     // PhanRedefinedClassReference : 30+ occurrences
-    // PhanUndeclaredFunction : 15+ occurrences
     // PhanUndeclaredStaticMethod : 15+ occurrences
     // PhanRedefinedExtendedClass : 4 occurrences
     // PhanUndeclaredProperty : 4 occurrences
     // PhanUndeclaredMethod : 3 occurrences
     // PhanUnreferencedUseNormal : 3 occurrences
-    // PhanTypeMismatchArgumentSuperType : 1 occurrence
+    // PhanTypeMismatchArgumentNullableInternal : 1 occurrence
     // PhanUndeclaredExtendedClass : 1 occurrence
     // PhanUnreferencedClosure : 1 occurrence
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
     'file_suppressions' => [
-        'src/Bridge/Symfony/Form/Type/HierarchyJsonType.php' => ['PhanUndeclaredFunction', 'PhanUnreferencedUseNormal'],
-        'src/Command/BuildCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanTypeMismatchArgumentSuperType', 'PhanUndeclaredFunction', 'PhanUndeclaredMethod', 'PhanUnreferencedClosure'],
-        'src/Exception/BuildException.php' => ['PhanUndeclaredFunction', 'PhanUnreferencedUseNormal'],
-        'src/Helper/FileWriter.php' => ['PhanUndeclaredFunction'],
+        'src/Bridge/Symfony/Form/Type/HierarchyJsonType.php' => ['PhanUnreferencedUseNormal'],
+        'src/Command/BuildCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanTypeMismatchArgumentNullableInternal', 'PhanUndeclaredMethod', 'PhanUnreferencedClosure'],
+        'src/Exception/BuildException.php' => ['PhanUnreferencedUseNormal'],
         'tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php' => ['PhanUndeclaredExtendedClass', 'PhanUndeclaredMethod', 'PhanUndeclaredProperty', 'PhanUndeclaredStaticMethod'],
         'tests/Exception/BuildExceptionTest.php' => ['PhanRedefinedExtendedClass', 'PhanUndeclaredMethod'],
         'tests/ParserTest.php' => ['PhanRedefinedExtendedClass', 'PhanUndeclaredStaticMethod'],

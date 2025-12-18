@@ -15,7 +15,6 @@ namespace SerendipityHQ\Component\GeoBuilder\Helper;
 
 use function Safe\file_put_contents;
 use function Safe\mkdir;
-use function Safe\sprintf;
 
 /**
  * Helper class to deal with file writing.

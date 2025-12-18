@@ -178,5 +178,10 @@
             "@val:phpcs",
             "@val:cn"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
     }
 }

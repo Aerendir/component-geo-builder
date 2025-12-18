@@ -30,8 +30,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DomCrawler\Crawler;
 
 use function Safe\mkdir;
-use function Safe\sprintf;
-use function Safe\substr;
 use function Safe\tempnam;
 use function Safe\unlink;
 

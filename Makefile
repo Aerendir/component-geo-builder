@@ -1,9 +1,12 @@
 # Supported PHP Versions
 PHP_VERSIONS := 8.1 8.2 8.3 8.4 8.5
 
+# Supported Symfony Versions
+SF_VERSIONS := 6.4 7.4 8.0
+
 # Versions (always use the lowest supported versions)
 PHP_V ?= 8.1
-SF_V ?= 6.4
+SF_V  ?= 6.4
 
 # Helper variable to use in `docker-compose.yaml`
 PHP_V_ID := $(shell echo $(PHP_V) | tr -d .)
@@ -27,27 +30,59 @@ COMPOSER_EX = $(PHP_CONT) composer
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY: help build start stax stop stop-v down sh composer initialize cov mut $(PHP_VERSIONS)
+.PHONY: help build start stax stop stop-v down sh composer initialize cov mut sf $(PHP_VERSIONS)
 
 # Icons
 ICON_THICK = \033[32m\xE2\x9C\x94\033[0m
 ICON_CROSS = \033[31m\xE2\x9C\x96\033[0m
 
-# If second argument is in the form `x.y` (ex. `8.2`), then use it to set `PHP_V`
-ifneq ($(word 2,$(MAKECMDGOALS)),)
-  ifeq ($(filter $(word 2,$(MAKECMDGOALS)),$(PHP_VERSIONS)),)
-    $(error Unsupported PHP version "$(word 2,$(MAKECMDGOALS))". Supported versions are: $(PHP_VERSIONS))
-  else
-    PHP_V := $(word 2,$(MAKECMDGOALS))
-    PHP_V_ID := $(shell echo $(PHP_V) | tr -d .)
-    override MAKECMDGOALS := $(word 1,$(MAKECMDGOALS))
+# -----------------------------------------------------------------------------
+# Positional arguments parsing (target-aware)
+# -----------------------------------------------------------------------------
+
+TARGET := $(word 1,$(MAKECMDGOALS))
+ARG1   := $(word 2,$(MAKECMDGOALS))
+ARG2   := $(word 3,$(MAKECMDGOALS))
+
+# --- start / stax: [PHP] [SF] ---
+ifeq ($(filter $(TARGET),start stax),$(TARGET))
+
+  ifneq ($(ARG1),)
+    ifeq ($(filter $(ARG1),$(PHP_VERSIONS)),)
+      $(error Unsupported PHP version "$(ARG1)". Supported versions are: $(PHP_VERSIONS))
+    else
+      PHP_V := $(ARG1)
+      PHP_V_ID := $(shell echo $(PHP_V) | tr -d .)
+    endif
+  endif
+
+  ifneq ($(ARG2),)
+    ifeq ($(filter $(ARG2),$(SF_VERSIONS)),)
+      $(error Unsupported Symfony version "$(ARG2)". Supported versions are: $(SF_VERSIONS))
+    else
+      SF_V := $(ARG2)
+    endif
+  endif
+
+endif
+
+# --- sf: [SF] ---
+ifeq ($(TARGET),sf)
+  ifneq ($(ARG1),)
+    ifeq ($(filter $(ARG1),$(SF_VERSIONS)),)
+      $(error Unsupported Symfony version "$(ARG1)". Supported versions are: $(SF_VERSIONS))
+    else
+      SF_V := $(ARG1)
+    endif
   endif
 endif
 
-##
-##Help
-##====
-##
+# Strip extra args, keep only the target
+override MAKECMDGOALS := $(TARGET)
+
+# -----------------------------------------------------------------------------
+# Help
+# -----------------------------------------------------------------------------
 
 help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z0-9_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/ '
@@ -58,55 +93,73 @@ cov: ## Opens the code coverage in the browser
 mut: ## Opens the report of mutations in the browser
 	open var/mutations.html
 
-##
-##Docker:
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
 
-start: ## Starts the containers to run the lib (all in detached mode - no logs). Ex.: make start 8.2
+start: ## Starts the containers. Ex: make start [php] [sf]
 	$(MAKE) stop
+	@echo ""
+	@echo "Using PHP \033[32m$(PHP_V)\033[0m | Symfony \033[32m$(SF_V)\033[0m"
+	@echo "Debug: \033[32mOff\033[0m"
+	@echo ""
 	$(DOCKER_COMP) up -d --build
+	$(MAKE) sf
 
-stax: ## Starts, WITH XDEBUG, the containers to run TrustBack.Me (all in detached mode - no logs).
+stax: ## Starts containers WITH XDEBUG. Ex: make stax [php] [sf]
 	$(MAKE) stop
-	XDEBUG_MODE=debug PROJECT_ROOT=`pwd` docker compose up -d
+	@echo ""
+	@echo "Using PHP \033[32m$(PHP_V)\033[0m | Symfony \033[32m$(SF_V)\033[0m (XDEBUG)"
+	@echo "Debug: \033[32mOn\033[0m"
+	@echo ""
+	XDEBUG_MODE=debug $(DOCKER_COMP) up -d --build
+	$(MAKE) sf
 
 sync: ## Syncs branches and dependencies.
 	git fetch
 	gt sync
 	gt s --stack --update-only
 
-stafu: ## Starts the containers to run the component (all in detached mode - no logs) and also syncs branches and dependencies.
+stafu: ## Starts containers and syncs branches and dependencies.
 	${MAKE} sync
 	${MAKE} start
 	${MAKE} composer c='install'
 
-stop: ## Stops all containers for all PHP versions (using `docker compose stop`)
+stop: ## Stops all containers for all PHP versions
 	for v in $(PHP_VERSIONS); do $(MAKE) stop-v PHP_V=$$v; done
 
-
-down: ## Downs the docker hub (using `docker compose down`)
+down: ## Downs the docker hub
 	$(DOCKER_COMP) down --remove-orphans -v
 
-sh: ## Connects to the lib's main container
+sh: ## Connects to the main container
 	$(PHP_CONT) bash
 
 build: ## Builds the Docker images
 	$(DOCKER_COMP) build --pull
 
-initialize: ## Builds and start the containers
+initialize: ## Builds and starts the containers
 	$(MAKE) build PHP_V=$(PHP_V)
 	$(MAKE) start PHP_V=$(PHP_V)
 
-##
-##Composer:
+# -----------------------------------------------------------------------------
+# Composer
+# -----------------------------------------------------------------------------
 
-composer: ## Run Composer. Pass the parameter "c=" to run a given command, example: make composer c='install'
+composer: ## Run Composer. Pass c=... (default: install)
 	$(eval c ?=install)
 	$(COMPOSER_EX) $(c)
 
-# Private commands
+sf: ## Install Symfony version. Ex: make sf 6.4
+	$(COMPOSER_EX) config extra.symfony.require "~$(SF_V)"
+	$(COMPOSER_EX) update "symfony/*" --with-all-dependencies
+
+# -----------------------------------------------------------------------------
+# Private / helpers
+# -----------------------------------------------------------------------------
+
 stop-v:
 	@$(DOCKER_COMP) stop
 
-# Avoids error `make: *** No rule to make target `8.4'.  Stop.`
-$(PHP_VERSIONS):
+# Avoids error: No rule to make target `8.x'
+$(PHP_VERSIONS) $(SF_VERSIONS):
 	@true

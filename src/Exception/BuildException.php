@@ -15,8 +15,6 @@ namespace SerendipityHQ\Component\GeoBuilder\Exception;
 
 use Throwable;
 
-use function Safe\sprintf;
-
 /**
  * Contains all exception throwable by BuildCommand.
  *

@@ -4,15 +4,6 @@
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$options]]></code>
     </MoreSpecificImplementedParamType>
-    <RedundantCondition>
-      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
-      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
-      <code><![CDATA[null !== $type->propertyAccessor->getValue($data, self::ADMIN2_FIELD)]]></code>
-    </RedundantCondition>
-    <ReservedWord>
-      <code><![CDATA[$event->getData()]]></code>
-      <code><![CDATA[$type->propertyAccessor->getValue($data, self::ADMIN1_FIELD)]]></code>
-    </ReservedWord>
   </file>
   <file src="src/Command/BuildCommand.php">
     <NonInvariantDocblockPropertyType>
@@ -24,15 +15,6 @@
     <PropertyNotSetInConstructor>
       <code><![CDATA[$ioWriter]]></code>
     </PropertyNotSetInConstructor>
-    <UndefinedClass>
-      <code><![CDATA[$node]]></code>
-      <code><![CDATA[$node]]></code>
-      <code><![CDATA[Crawler]]></code>
-      <code><![CDATA[Crawler]]></code>
-      <code><![CDATA[Crawler]]></code>
-      <code><![CDATA[ProgressBar]]></code>
-      <code><![CDATA[ProgressBar]]></code>
-    </UndefinedClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[section]]></code>
     </UndefinedInterfaceMethod>
@@ -43,20 +25,10 @@
       <code><![CDATA[$message]]></code>
     </MissingParamType>
   </file>
-  <file src="src/Parser.php">
-    <ReservedWord>
-      <code><![CDATA[$encoder->decode($unzippedCountry, CsvEncoder::FORMAT)]]></code>
-    </ReservedWord>
-  </file>
   <file src="tests/Bridge/Symfony/Form/Type/HierarchyJsonTypeTest.php">
     <InvalidArgument>
       <code><![CDATA[$values]]></code>
       <code><![CDATA[$values]]></code>
     </InvalidArgument>
-  </file>
-  <file src="tests/Exception/BuildExceptionTest.php">
-    <UndefinedClass>
-      <code><![CDATA[never]]></code>
-    </UndefinedClass>
   </file>
 </files>

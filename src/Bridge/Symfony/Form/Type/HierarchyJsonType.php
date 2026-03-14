@@ -23,9 +23,6 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
-use function Safe\array_flip;
-use function Safe\asort;
-
 /**
  * Form type to manage User's permissions.
  *

@@ -1,5 +1,8 @@
 .php_cs
 composer.lock
+# The lock files of the `vendor-bin` namespaces are committed on purpose: they pin the development
+# tools only and play no part in how this package resolves when something else requires it.
+!vendor-bin/*/composer.lock
 phpunit.xml
 var
 vendor

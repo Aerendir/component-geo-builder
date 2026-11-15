@@ -29,10 +29,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DomCrawler\Crawler;
 
-use function Safe\mkdir;
-use function Safe\tempnam;
-use function Safe\unlink;
-
 /**
  * Builds the geo lists.
  */
@@ -44,21 +40,17 @@ final class BuildCommand extends Command
     /** @var string */
     private const EXT = '.zip';
 
-    /** @var string $defaultName */
+    /** @var string|null $defaultName */
     protected static $defaultName = 'geobuilder:build';
 
-    private Client $client;
-    private string $dumpDir;
     private SymfonyStyle $ioWriter;
-    private HierarchyJsonDumper $dumper;
+    private readonly HierarchyJsonDumper $dumper;
 
     /** @var array $availableCountries The list of countries available on GeoNames */
     private array $availableCountries = [];
 
-    public function __construct(Client $client, string $dumpDir)
+    public function __construct(private readonly Client $client, private readonly string $dumpDir)
     {
-        $this->client  = $client;
-        $this->dumpDir = $dumpDir;
         $this->dumper  = new HierarchyJsonDumper();
 
         parent::__construct();
@@ -158,7 +150,11 @@ final class BuildCommand extends Command
 
     private function downloadRequestedCountry(ConsoleSectionOutput $output, string $requestedCountry): string
     {
-        $tmpFileName = tempnam(\sys_get_temp_dir(), 'geobuilder');
+        $tmpFileName = \tempnam(\sys_get_temp_dir(), 'geobuilder');
+        if (false === $tmpFileName) {
+            throw new \RuntimeException('Impossible to create the temporary file to download the country.');
+        }
+
         $progress    = new ProgressBar($output, 0, 1);
         $this->client->request('GET', sprintf('%s%s%s', self::DATA_URL, \strtoupper($requestedCountry), self::EXT), [
             RequestOptions::SINK     => $tmpFileName,
@@ -191,13 +187,19 @@ final class BuildCommand extends Command
             throw new \RuntimeException('Impossile to unzip the source file of the country.');
         }
 
-        $tmpFolder = tempnam(\sys_get_temp_dir(), 'geobuilder');
+        $tmpFolder = \tempnam(\sys_get_temp_dir(), 'geobuilder');
+        if (false === $tmpFolder) {
+            throw new \RuntimeException('Impossible to create the temporary folder to unzip the country.');
+        }
+
         if (false === \is_dir($tmpFolder)) {
             if (\file_exists($tmpFolder)) {
-                unlink($tmpFolder);
+                if (false === \unlink($tmpFolder)) {
+                    throw new \RuntimeException(sprintf('File "%s" was not deleted', $tmpFolder));
+                }
             }
 
-            mkdir($tmpFolder);
+            \mkdir($tmpFolder);
 
             if ( ! \is_dir($tmpFolder)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $tmpFolder));

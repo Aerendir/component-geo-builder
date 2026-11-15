@@ -16,27 +16,24 @@ namespace SerendipityHQ\Component\GeoBuilder\Reader;
 use SerendipityHQ\Component\GeoBuilder\Helper\FileWriter;
 use SerendipityHQ\Component\GeoBuilder\ReaderInterface;
 
-use function Safe\file_get_contents;
-use function Safe\json_decode;
-
 /**
  * Reader for the hierarchy json dumps.
  */
-final class HierarchyJsonReader implements ReaderInterface
+final readonly class HierarchyJsonReader implements ReaderInterface
 {
-    private string $dataFolderPath;
-
-    public function __construct(string $dataFolderPath)
+    public function __construct(private string $dataFolderPath)
     {
-        $this->dataFolderPath = $dataFolderPath;
     }
 
     public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array
     {
         $fileName = FileWriter::buildFileName([$country, $admin1, $admin2, $admin3], '.json');
         $filePath = $this->dataFolderPath . DIRECTORY_SEPARATOR . $fileName;
-        $content  = file_get_contents($filePath);
+        $content  = \file_get_contents($filePath);
+        if (false === $content) {
+            throw new \RuntimeException(\sprintf('Impossible to read the file "%s".', $filePath));
+        }
 
-        return json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        return \json_decode($content, true, 512, JSON_THROW_ON_ERROR);
     }
 }

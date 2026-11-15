@@ -24,7 +24,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
  */
 final class HierarchyJsonDumper implements DumperInterface
 {
-    private JsonEncode $encoder;
+    private readonly JsonEncode $encoder;
 
     /** @var string[] $countries */
     private array $countries = [];

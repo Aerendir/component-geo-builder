@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Component\GeoBuilder\Helper;
 
-use function Safe\file_put_contents;
-use function Safe\mkdir;
-
 /**
  * Helper class to deal with file writing.
  */
@@ -41,12 +38,16 @@ final class FileWriter
         $dir   = '';
 
         foreach ($parts as $part) {
-            if ( ! \is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! mkdir($dir) && ! \is_dir($dir)) {
+            if ( ! \is_dir($dir .= DIRECTORY_SEPARATOR . $part) && ! \mkdir($dir) && ! \is_dir($dir)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
             }
         }
 
-        file_put_contents(sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file), $contents);
+        $filePath = sprintf('%s%s%s', $dir, DIRECTORY_SEPARATOR, $file);
+
+        if (false === \file_put_contents($filePath, $contents)) {
+            throw new \RuntimeException(sprintf('File "%s" was not written', $filePath));
+        }
     }
 
     public static function buildFileName(array $fileNameParts, string $ext): string

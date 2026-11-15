@@ -40,7 +40,7 @@ final class BuildCommand extends Command
     /** @var string */
     private const EXT = '.zip';
 
-    /** @var string $defaultName */
+    /** @var string|null $defaultName */
     protected static $defaultName = 'geobuilder:build';
 
     private SymfonyStyle $ioWriter;

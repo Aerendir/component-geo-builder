@@ -19,8 +19,6 @@ use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonDumper;
 use SerendipityHQ\Component\GeoBuilder\Reader\HierarchyJsonReader;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
-use function Safe\file_get_contents;
-
 /**
  * Tests Parser.
  */
@@ -56,9 +54,9 @@ final class HierarchyJsonTest extends TestCase
         $expectedAdmin3Dump  = (new JsonEncoder())->encode($jsonData, JsonEncoder::FORMAT);
         $hierarchyJsonDumper->dump($dumpFolder, self::TEST);
 
-        $admin1 = file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT.json');
-        $admin2 = file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT_AB.json');
-        $admin3 = file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT_AB_AQ.json');
+        $admin1 = \file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT.json');
+        $admin2 = \file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT_AB.json');
+        $admin3 = \file_get_contents($dumpFolder . DIRECTORY_SEPARATOR . 'IT_AB_AQ.json');
 
         self::assertEquals($expectedAdmin1Dump, $admin1);
         self::assertEquals($expectedAdmin2Dump, $admin2);

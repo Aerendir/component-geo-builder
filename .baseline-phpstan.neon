@@ -181,12 +181,6 @@ parameters:
 			path: src/Helper/FileWriter.php
 
 		-
-			message: '#^Result of function Safe\\mkdir \(void\) is used\.$#'
-			identifier: function.void
-			count: 1
-			path: src/Helper/FileWriter.php
-
-		-
 			message: '#^Method SerendipityHQ\\Component\\GeoBuilder\\Parser\:\:parse\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

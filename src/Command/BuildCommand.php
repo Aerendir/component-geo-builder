@@ -43,18 +43,14 @@ final class BuildCommand extends Command
     /** @var string $defaultName */
     protected static $defaultName = 'geobuilder:build';
 
-    private Client $client;
-    private string $dumpDir;
     private SymfonyStyle $ioWriter;
-    private HierarchyJsonDumper $dumper;
+    private readonly HierarchyJsonDumper $dumper;
 
     /** @var array $availableCountries The list of countries available on GeoNames */
     private array $availableCountries = [];
 
-    public function __construct(Client $client, string $dumpDir)
+    public function __construct(private readonly Client $client, private readonly string $dumpDir)
     {
-        $this->client  = $client;
-        $this->dumpDir = $dumpDir;
         $this->dumper  = new HierarchyJsonDumper();
 
         parent::__construct();

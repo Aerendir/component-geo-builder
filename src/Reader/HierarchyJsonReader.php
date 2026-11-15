@@ -19,13 +19,10 @@ use SerendipityHQ\Component\GeoBuilder\ReaderInterface;
 /**
  * Reader for the hierarchy json dumps.
  */
-final class HierarchyJsonReader implements ReaderInterface
+final readonly class HierarchyJsonReader implements ReaderInterface
 {
-    private string $dataFolderPath;
-
-    public function __construct(string $dataFolderPath)
+    public function __construct(private string $dataFolderPath)
     {
-        $this->dataFolderPath = $dataFolderPath;
     }
 
     public function read(?string $country = null, ?string $admin1 = null, ?string $admin2 = null, ?string $admin3 = null, ?string $place = null): array
